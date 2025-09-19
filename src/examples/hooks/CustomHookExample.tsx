@@ -1,12 +1,5 @@
 import { useCounter, useLocalStorage, useFetch } from '../../hooks';
-
-// API 응답 타입 정의
-interface Post {
-  id: number;
-  title: string;
-  body: string;
-  userId: number;
-}
+import type { Post } from '../../types';
 
 /**
  * 커스텀 훅 사용 예제

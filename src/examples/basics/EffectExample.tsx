@@ -2,6 +2,12 @@ import { useState, useEffect } from 'react';
 
 /**
  * useEffect 기본 사용법 예제
+ * EffectExample is a React functional component that demonstrates the usage of the useEffect hook.
+ * It includes various useEffect examples such as handling component lifecycle events, updating the document title,
+ * handling window resize events, and implementing a timer.
+ *
+ * @return {JSX.Element} A JSX element that displays examples of useEffect in managing state changes,
+ * window resize events, and a timer.
  */
 export default function EffectExample() {
   const [count, setCount] = useState(0);
@@ -47,21 +53,27 @@ export default function EffectExample() {
 
   return (
     <div style={{ padding: '20px', border: '1px solid #ccc', margin: '10px' }}>
-      <h3>useEffect 기본 예제</h3>
-      
+      <h2>useEffect 기본 예제</h2>
+
+      <h3>1. 카운트 변화에 따라 브라우저 타이틀 변경</h3>
       <div style={{ marginBottom: '15px' }}>
-        <p>카운트: {count} (브라우저 탭 제목도 확인해보세요!)</p>
-        <button onClick={() => setCount(count + 1)}>카운트 증가</button>
+        <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>카운트: {count}
+          <button style={{ marginLeft: '10px' }} onClick={() => setCount(count + 1)}>증가</button>
+        </p>
       </div>
 
+      <h3>2. 윈도우 사이즈 변경 감지</h3>
       <div style={{ marginBottom: '15px' }}>
-        <p>현재 윈도우 너비: {windowWidth}px</p>
-        <small>브라우저 창 크기를 조절해보세요!</small>
+        <small>(브라우저 창 크기를 조절해보세요!)</small>
+        <p>윈도우 너비: {windowWidth}px</p>
       </div>
 
+      <h3>3. 타이머 실행</h3>
       <div>
-        <p>타이머: {timer}초</p>
-        <button onClick={() => setTimer(0)}>타이머 리셋</button>
+        <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          타이머: {timer}초
+          <button style={{ marginLeft: '10px' }} onClick={() => setTimer(0)}>리셋</button>
+        </p>
       </div>
     </div>
   );
