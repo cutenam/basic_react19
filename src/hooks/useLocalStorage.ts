@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 /**
  * localStorage와 동기화되는 상태를 제공하는 커스텀 훅
