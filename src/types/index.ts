@@ -23,4 +23,5 @@ export type ExampleType =
   | 'effect' 
   | 'actions' 
   | 'optimistic' 
+  | 'form-status'
   | 'custom-hooks';

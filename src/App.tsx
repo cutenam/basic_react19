@@ -7,7 +7,7 @@ import './App.css'
 import Navigation from './components/layout/Navigation'
 import StateExample from './examples/basics/StateExample'
 import EffectExample from './examples/basics/EffectExample'
-import ActionsExample, { OptimisticExample } from './examples/react19/ActionsExample'
+import ActionsExample, { OptimisticExample, FormStatusExample } from './examples/react19/ActionsExample'
 import CustomHookExample from './examples/hooks/CustomHookExample'
 
 import type { ExampleType } from './types'
@@ -25,6 +25,8 @@ function App() {
         return <ActionsExample />
       case 'optimistic':
         return <OptimisticExample />
+      case 'form-status':
+        return <FormStatusExample />
       case 'custom-hooks':
         return <CustomHookExample />
       default:

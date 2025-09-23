@@ -1,69 +1,34 @@
-import { ButtonHTMLAttributes, ReactNode } from 'react';
+import type { ButtonHTMLAttributes, ReactNode } from 'react';
+import styles from '../../styles/components/Button.module.css';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'danger';
+  variant?: 'primary' | 'secondary' | 'danger' | 'function' | 'base' ;
   size?: 'small' | 'medium' | 'large';
   children: ReactNode;
 }
 
 /**
- * 재사용 가능한 버튼 컴포넌트
+ * CSS Modules를 사용하여 가상 선택자를 구현한 Button 컴포넌트
+ * 스타일이 모듈화되어 있어 클래스명 충돌을 방지
  */
-export default function Button({ 
-  variant = 'primary', 
-  size = 'medium', 
-  children, 
+export default function ButtonWithCSSModules({
+  variant = 'base',
+  size = 'medium',
+  children,
   className = '',
-  ...props 
+  ...props
 }: ButtonProps) {
-  const baseStyles = {
-    border: 'none',
-    borderRadius: '4px',
-    cursor: 'pointer',
-    fontWeight: '500',
-    transition: 'all 0.2s ease',
-  };
-
-  const variantStyles = {
-    primary: {
-      backgroundColor: '#007bff',
-      color: 'white',
-    },
-    secondary: {
-      backgroundColor: '#6c757d',
-      color: 'white',
-    },
-    danger: {
-      backgroundColor: '#dc3545',
-      color: 'white',
-    },
-  };
-
-  const sizeStyles = {
-    small: {
-      padding: '4px 8px',
-      fontSize: '12px',
-    },
-    medium: {
-      padding: '8px 16px',
-      fontSize: '14px',
-    },
-    large: {
-      padding: '12px 24px',
-      fontSize: '16px',
-    },
-  };
-
-  const combinedStyles = {
-    ...baseStyles,
-    ...variantStyles[variant],
-    ...sizeStyles[size],
-  };
+  // CSS Modules 클래스명 조합
+  const buttonClasses = [
+    styles.button,
+    styles[variant],
+    styles[size],
+    className
+  ].filter(Boolean).join(' ');
 
   return (
-    <button 
-      style={combinedStyles}
-      className={className}
+    <button
+      className={buttonClasses}
       {...props}
     >
       {children}

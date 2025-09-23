@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Button from "../../components/common/Button.tsx";
 
 /**
  * useEffect 기본 사용법 예제
@@ -58,7 +59,7 @@ export default function EffectExample() {
       <h3>1. 카운트 변화에 따라 브라우저 타이틀 변경</h3>
       <div style={{ marginBottom: '15px' }}>
         <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>카운트: {count}
-          <button style={{ marginLeft: '10px' }} onClick={() => setCount(count + 1)}>증가</button>
+          <Button variant='function' size='medium' style={{ marginLeft: '10px', border: '1px solid #dee2e6' }} onClick={() => setCount(count + 1)}>증가</Button>
         </p>
       </div>
 
@@ -72,7 +73,7 @@ export default function EffectExample() {
       <div>
         <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           타이머: {timer}초
-          <button style={{ marginLeft: '10px' }} onClick={() => setTimer(0)}>리셋</button>
+          <Button variant='function' size='medium' style={{ marginLeft: '10px', border: '1px solid #dee2e6' }} onClick={() => setTimer(0)}>리셋</Button>
         </p>
       </div>
     </div>

@@ -1,3 +1,5 @@
+import Button from '../common/Button';
+
 /**
  * Navigation 컴포넌트의 props 타입 정의
  */
@@ -23,6 +25,7 @@ const navigationItems: NavItem[] = [
   { id: 'effect', label: 'useEffect 기본', category: 'basics' },
   { id: 'actions', label: 'Actions (React 19)', category: 'react19' },
   { id: 'optimistic', label: 'Optimistic Updates', category: 'react19' },
+  { id: 'form-status', label: 'useFormStatus', category: 'react19' },
   { id: 'custom-hooks', label: '커스텀 훅', category: 'hooks' },
 ];
 
@@ -80,22 +83,16 @@ export default function Navigation({ currentExample, onExampleChange }: Navigati
             {navigationItems
               .filter(item => item.category === category)
               .map(item => (
-                <button
+                <Button size='medium'
                   key={item.id}
                   onClick={() => onExampleChange(item.id)}
                   style={{
-                    padding: '8px 12px',
-                    border: '1px solid #dee2e6',
-                    borderRadius: '4px',
-                    backgroundColor: currentExample === item.id ? '#007bff' : 'white',
-                    color: currentExample === item.id ? 'white' : '#333',
-                    cursor: 'pointer',
-                    fontSize: '13px',
-                    transition: 'all 0.2s ease',
+                    backgroundColor : (currentExample === item.id) ? '#007bff' : 'white',
+                    color : (currentExample === item.id) ? 'white' : '#333',
                   }}
                 >
                   {item.label}
-                </button>
+                </Button>
               ))
             }
           </div>

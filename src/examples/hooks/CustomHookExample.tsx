@@ -1,5 +1,6 @@
 import { useCounter, useLocalStorage, useFetch } from '../../hooks';
 import type { Post } from '../../types';
+import Button from '../../components/common/Button';
 
 /**
  * 커스텀 훅 사용 예제
@@ -23,9 +24,9 @@ function CounterHookExample() {
     <div style={{ marginBottom: '20px', padding: '15px', backgroundColor: '#f8f9fa', borderRadius: '4px' }}>
       <h4>useCounter 훅</h4>
       <p>카운트: {count}</p>
-      <button onClick={increment} style={{ marginRight: '5px' }}>증가</button>
-      <button onClick={decrement} style={{ marginRight: '5px' }}>감소</button>
-      <button onClick={reset}>리셋</button>
+      <Button variant='function' size='medium' style={{ marginRight: '5px' }} onClick={increment}>증가</Button>
+      <Button variant='function' size='medium' style={{ marginRight: '5px' }} onClick={decrement}>감소</Button>
+      <Button variant='function' size='medium' style={{ marginRight: '5px' }} onClick={reset}>리셋</Button>
       숫자입력: <input type="text" value={count} onChange={(e) => setValue(Number(e.target.value))} />
     </div>
   );
@@ -45,7 +46,8 @@ function LocalStorageHookExample() {
         placeholder="이름을 입력하세요 (자동 저장됨)"
         style={{ padding: '5px', marginRight: '10px' }}
       />
-      <button onClick={() => setName('')}>지우기</button>
+      {/*<button onClick={() => setName('')}>지우기</button>*/}
+      <Button variant='function' size='medium' style={{ marginLeft: '5px'}} onClick={() => setName('')}>지우기</Button>
     </div>
   );
 }

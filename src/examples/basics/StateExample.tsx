@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Button from "../../components/common/Button.tsx";
 
 /**
  * useState 기본 사용법 예제
@@ -23,9 +24,9 @@ export default function StateExample() {
       <h3>1. 카운터</h3>
       <div style={{ marginBottom: '15px' }}>
         <p>카운트: {count}</p>
-        <button onClick={() => setCount(count + 1)}>증가</button>
-        <button onClick={() => setCount(count - 1)} style={{ marginLeft: '5px' }}>감소</button>
-        <button onClick={() => setCount(0)} style={{ marginLeft: '5px' }}>리셋</button>
+        <Button variant='function' size='medium' style={{ border: '1px solid #dee2e6', }} onClick={() => setCount(count + 1)}>증가</Button>
+        <Button variant='function' size='medium' style={{ marginLeft: '5px', border: '1px solid #dee2e6', }} onClick={() => setCount(count - 1)}>감소</Button>
+        <Button variant='function' size='medium' style={{ marginLeft: '5px', border: '1px solid #dee2e6', }} onClick={() => setCount(0)}>리셋</Button>
       </div>
 
       {/* 문자열 상태 */}
@@ -43,9 +44,9 @@ export default function StateExample() {
       {/* Boolean 상태 */}
       <h3>3. 토글 버튼</h3>
       <div>
-        <button onClick={() => setIsVisible(!isVisible)}>
+        <Button variant='function' size='medium' style={{ border: '1px solid #dee2e6', }} onClick={() => setIsVisible(!isVisible)}>
           {isVisible ? '숨기기' : '보이기'}
-        </button>
+        </Button>
         {isVisible && (
           <p style={{ color: 'blue', marginTop: '10px' }}>
             이 텍스트는 토글됩니다!
