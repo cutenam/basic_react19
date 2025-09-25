@@ -7,8 +7,11 @@ import './App.css'
 import Navigation from './components/layout/Navigation'
 import StateExample from './examples/basics/StateExample'
 import EffectExample from './examples/basics/EffectExample'
-import ActionsExample, { OptimisticExample, FormStatusExample } from './examples/react19/ActionsExample'
+import ActionsExample from './examples/react19/ActionsExample'
+import OptimisticExample from './examples/react19/OptimisticExample'
+import FormStatusExample from './examples/react19/FormStatusExample'
 import CustomHookExample from './examples/hooks/CustomHookExample'
+
 
 import type { ExampleType } from './types'
 

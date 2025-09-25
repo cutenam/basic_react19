@@ -11,7 +11,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
  * CSS Modules를 사용하여 가상 선택자를 구현한 Button 컴포넌트
  * 스타일이 모듈화되어 있어 클래스명 충돌을 방지
  */
-export default function ButtonWithCSSModules({
+export default function Button({
   variant = 'base',
   size = 'medium',
   children,
