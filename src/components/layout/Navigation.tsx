@@ -23,9 +23,12 @@ interface NavItem {
 const navigationItems: NavItem[] = [
   { id: 'state', label: 'useState 기본', category: 'basics' },
   { id: 'effect', label: 'useEffect 기본', category: 'basics' },
+  { id: 'context', label: 'Context 기본', category: 'basics' },
+  { id: 'auth-context', label: '인증 Context', category: 'basics' },
   { id: 'actions', label: 'Actions (React 19)', category: 'react19' },
   { id: 'optimistic', label: 'Optimistic Updates', category: 'react19' },
   { id: 'form-status', label: 'useFormStatus', category: 'react19' },
+  { id: 'use-hook', label: 'use 훅', category: 'react19' },
   { id: 'custom-hooks', label: '커스텀 훅', category: 'hooks' },
 ];
 

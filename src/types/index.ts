@@ -21,7 +21,10 @@ export interface ApiResponse<T> {
 export type ExampleType = 
   | 'state' 
   | 'effect' 
+  | 'context'
+  | 'auth-context'
   | 'actions' 
   | 'optimistic' 
   | 'form-status'
+  | 'use-hook'
   | 'custom-hooks';

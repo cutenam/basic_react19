@@ -7,10 +7,13 @@ import './App.css'
 import Navigation from './components/layout/Navigation'
 import StateExample from './examples/basics/StateExample'
 import EffectExample from './examples/basics/EffectExample'
+import ContextExample from './examples/basics/ContextExample'
+import AuthContextExample from './examples/basics/AuthContextExample'
 import ActionsExample from './examples/react19/ActionsExample'
 import OptimisticExample from './examples/react19/OptimisticExample'
 import FormStatusExample from './examples/react19/FormStatusExample'
 import CustomHookExample from './examples/hooks/CustomHookExample'
+import UseHookExample from './examples/react19/UseHookExample'
 
 
 import type { ExampleType } from './types'
@@ -24,12 +27,18 @@ function App() {
         return <StateExample />
       case 'effect':
         return <EffectExample />
+      case 'context':
+        return <ContextExample />
+      case 'auth-context':
+        return <AuthContextExample />
       case 'actions':
         return <ActionsExample />
       case 'optimistic':
         return <OptimisticExample />
       case 'form-status':
         return <FormStatusExample />
+      case 'use-hook':
+        return <UseHookExample />
       case 'custom-hooks':
         return <CustomHookExample />
       default:
