@@ -27,4 +27,5 @@ export type ExampleType =
   | 'optimistic' 
   | 'form-status'
   | 'use-hook'
+  | 'react-compiler'
   | 'custom-hooks';

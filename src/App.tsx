@@ -14,6 +14,7 @@ import OptimisticExample from './examples/react19/OptimisticExample'
 import FormStatusExample from './examples/react19/FormStatusExample'
 import CustomHookExample from './examples/hooks/CustomHookExample'
 import UseHookExample from './examples/react19/UseHookExample'
+import ReactCompilerExample from './examples/react19/ReactCompilerExample'
 
 
 import type { ExampleType } from './types'
@@ -39,6 +40,8 @@ function App() {
         return <FormStatusExample />
       case 'use-hook':
         return <UseHookExample />
+      case 'react-compiler':
+        return <ReactCompilerExample />
       case 'custom-hooks':
         return <CustomHookExample />
       default:

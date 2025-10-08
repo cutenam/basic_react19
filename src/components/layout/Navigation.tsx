@@ -29,6 +29,7 @@ const navigationItems: NavItem[] = [
   { id: 'optimistic', label: 'Optimistic Updates', category: 'react19' },
   { id: 'form-status', label: 'useFormStatus', category: 'react19' },
   { id: 'use-hook', label: 'use 훅', category: 'react19' },
+  { id: 'react-compiler', label: 'React Compiler', category: 'react19' },
   { id: 'custom-hooks', label: '커스텀 훅', category: 'hooks' },
 ];
 
