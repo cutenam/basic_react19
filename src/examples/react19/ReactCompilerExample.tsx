@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation} from "react-i18next";
 
 /**
  * React Compiler (자동 최적화) 예제
@@ -33,6 +34,7 @@ interface ExpensiveItemProps {
  *
  */
 const ExpensiveItemOld = React.memo(({ value, onClick }: ExpensiveItemProps) => {
+  const {t} = useTranslation();
 
   // 무거운 계산 시뮬레이션
   const expensiveCalculation = (num: number) => {
@@ -53,7 +55,7 @@ const ExpensiveItemOld = React.memo(({ value, onClick }: ExpensiveItemProps) => 
       borderRadius: '8px', 
       border: '1px solid #bfdbfe' 
     }}>
-      <p style={{ fontSize: '14px', color: '#4b5563' }}>무거운 계산 결과: {result}</p>
+      <p style={{ fontSize: '14px', color: '#4b5563' }}>{t('features.reactCompiler.label.resultHeavyComputation')}: {result}</p>
       <button
         onClick={onClick}
         style={{
@@ -68,10 +70,10 @@ const ExpensiveItemOld = React.memo(({ value, onClick }: ExpensiveItemProps) => 
         onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#2563eb'}
         onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#3b82f6'}
       >
-        콜백 카운터
+        {t('features.reactCompiler.label.childCounter')}
       </button>
       <p style={{ fontSize: '12px', color: '#4b5563', textAlign: 'left' }}>
-        💡 카운터를 증가시켜도 자식 컴포넌트는 React.memo, useCallback 적용으로 리렌더링되지 않습니다.
+        {`💡 ${t('features.reactCompiler.description.textHeavyComputation1')}`}
       </p>
     </div>
   );
@@ -96,6 +98,7 @@ const ExpensiveItemOld = React.memo(({ value, onClick }: ExpensiveItemProps) => 
  *
  */
 const ExpensiveItemNew = ({ value, onClick }: ExpensiveItemProps) => {
+  const {t} = useTranslation();
   // 무거운 계산 시뮬레이션
   const expensiveCalculation = (num: number) => {
     console.log('✨ [Compiler 방식] 무거운 계산 실행...');
@@ -116,7 +119,7 @@ const ExpensiveItemNew = ({ value, onClick }: ExpensiveItemProps) => {
       borderRadius: '8px', 
       border: '1px solid #DDC6BA'
     }}>
-      <p style={{ fontSize: '14px', color: '#4b5563' }}>무거운 계산 결과: {result}</p>
+      <p style={{ fontSize: '14px', color: '#4b5563' }}>{t('features.reactCompiler.label.resultHeavyComputation')}: {result}</p>
       <button
         onClick={onClick}
         style={{
@@ -131,10 +134,10 @@ const ExpensiveItemNew = ({ value, onClick }: ExpensiveItemProps) => {
         onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#D66B27'}
         onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#ef6c27'}
       >
-        콜백 카운터
+        {t('features.reactCompiler.label.childCounter')}
       </button>
       <p style={{ fontSize: '12px', color: '#4b5563', textAlign: 'left' }}>
-        💡 카운터를 증가시켜도 자식 컴포넌트는 React Compiler 적용으로 리렌더링되지 않습니다.
+        {`💡 ${t('features.reactCompiler.description.textHeavyComputation2')}`}
       </p>
     </div>
   );
@@ -165,6 +168,7 @@ const ExpensiveItemNew = ({ value, onClick }: ExpensiveItemProps) => {
 const ManualOptimizationDemo = () => {
   const [count, setCount] = useState(0);
   const [itemValue, setItemValue] = useState(100);
+  const {t} = useTranslation();
 
   // ✅ useCallback 메모이제이션 : [] 의존성 배열 값의 변화에 따라 새로운 함수 생성(추가적인 함수가 생성됨, 메모리 할당됨)
   const handleClickUseCallback = React.useCallback(() => {
@@ -186,12 +190,12 @@ const ManualOptimizationDemo = () => {
         borderRadius: '8px', 
         border: '1px solid #fde047' 
       }}>
-        <h4 style={{ fontWeight: '600', color: '#854d0e', marginBottom: '8px' }}>🔧 기존 방식 (수동 최적화)</h4>
+        <h4 style={{ fontWeight: '600', color: '#854d0e', marginBottom: '8px' }}>{`🔧 ${t('features.reactCompiler.heading.titleManualOptimize')}`}</h4>
         <p style={{ fontSize: '14px', color: '#4b5563', marginBottom: '12px' }}>
-          React.memo, useCallback 이용
+          {t('features.reactCompiler.label.textManualOptimize')}
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-          <p style={{ fontSize: '14px' }}>카운트 : {count}</p>
+          <p style={{ fontSize: '14px' }}>{t('common.count')} : {count}</p>
           <button
             onClick={handleClickWithout}
             style={{
@@ -206,7 +210,7 @@ const ManualOptimizationDemo = () => {
             onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#ca8a04'}
             onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#eab308'}
           >
-            부모 카운터
+            {t('features.reactCompiler.label.parentCounter')}
           </button>
         </div>
       </div>
@@ -243,6 +247,7 @@ const ManualOptimizationDemo = () => {
 const CompilerOptimizationDemo = () => {
   const [count, setCount] = useState(0);
   const [itemValue, setItemValue] = useState(100);
+  const {t} = useTranslation();
 
   // React Compiler 사용 시: useCallback 불필요!
   // 컴파일러가 자동으로 함수를 메모이제이션
@@ -264,12 +269,12 @@ const CompilerOptimizationDemo = () => {
         borderRadius: '8px', 
         border: '1px solid #bbf7d0' 
       }}>
-        <h4 style={{ fontWeight: '600', color: '#166534', marginBottom: '8px' }}>✨ React Compiler (자동 최적화)</h4>
+        <h4 style={{ fontWeight: '600', color: '#166534', marginBottom: '8px' }}>{`✨ ${t('features.reactCompiler.heading.titleAutoOptimize')}`}</h4>
         <p style={{ fontSize: '14px', color: '#4b5563', marginBottom: '12px' }}>
-          컴파일러가 자동으로 메모이제이션 적용
+          {t('features.reactCompiler.label.textAutoOptimize')}
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-          <p style={{ fontSize: '14px' }}>카운트 : {count}</p>
+          <p style={{ fontSize: '14px' }}>{t('common.count')} : {count}</p>
           <button
             onClick={handleClick}
             style={{
@@ -284,7 +289,7 @@ const CompilerOptimizationDemo = () => {
             onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#16a34a'}
             onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#22c55e'}
           >
-            부모 카운터
+            {t('features.reactCompiler.label.parentCounter')}
           </button>
         </div>
       </div>
@@ -311,6 +316,8 @@ const CompilerOptimizationDemo = () => {
  * - Styled sections for improved clarity and syntax-highlighted code blocks.
  */
 const CompilerConfigExample = () => {
+  const {t} = useTranslation();
+
   return (
     <div style={{ 
       backgroundColor: '#f9fafb', 
@@ -318,18 +325,19 @@ const CompilerConfigExample = () => {
       borderRadius: '8px', 
       border: '1px solid #e5e7eb' 
     }}>
-      <h4 style={{ fontWeight: '600', color: '#1f2937', marginBottom: '16px' }}>⚙️ React Compiler 설정 방법</h4>
+      <h4 style={{ fontWeight: '600', color: '#1f2937', marginBottom: '16px' }}>{`⚙️ ${t('features.reactCompiler.heading.titleGuidelineReactComplier')}`}</h4>
       
       <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
         <div>
-          <h5 style={{ fontWeight: '500', fontSize: '14px', marginBottom: '8px' }}>1. 패키지 설치</h5>
+          <h5 style={{ fontWeight: '500', fontSize: '14px', marginBottom: '8px', textAlign: 'left' }}>{t('features.reactCompiler.label.guidelineReactComplier1')}</h5>
           <pre style={{ 
             backgroundColor: '#1f2937', 
             color: '#4ade80', 
             padding: '12px', 
             borderRadius: '4px', 
             fontSize: '12px', 
-            overflowX: 'auto' 
+            overflowX: 'auto',
+            textAlign: 'left'
           }}>
 {`npm install -D babel-plugin-react-compiler
 # 또는
@@ -338,14 +346,15 @@ yarn add -D babel-plugin-react-compiler`}
         </div>
 
         <div>
-          <h5 style={{ fontWeight: '500', fontSize: '14px', marginBottom: '8px' }}>2. Babel 설정 (babel.config.js)</h5>
+          <h5 style={{ fontWeight: '500', fontSize: '14px', marginBottom: '8px', textAlign: 'left' }}>{t('features.reactCompiler.label.guidelineReactComplier2')}</h5>
           <pre style={{ 
             backgroundColor: '#1f2937', 
             color: '#4ade80', 
             padding: '12px', 
             borderRadius: '4px', 
             fontSize: '12px', 
-            overflowX: 'auto' 
+            overflowX: 'auto',
+            textAlign: 'left'
           }}>
 {`module.exports = {
   plugins: [
@@ -359,14 +368,15 @@ yarn add -D babel-plugin-react-compiler`}
         </div>
 
         <div>
-          <h5 style={{ fontWeight: '500', fontSize: '14px', marginBottom: '8px' }}>3. Vite 설정 (vite.config.ts)</h5>
+          <h5 style={{ fontWeight: '500', fontSize: '14px', marginBottom: '8px', textAlign: 'left' }}>{t('features.reactCompiler.label.guidelineReactComplier3')}</h5>
           <pre style={{ 
             backgroundColor: '#1f2937', 
             color: '#4ade80', 
             padding: '12px', 
             borderRadius: '4px', 
             fontSize: '12px', 
-            overflowX: 'auto' 
+            overflowX: 'auto',
+            textAlign: 'left'
           }}>
 {`import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
@@ -386,14 +396,15 @@ export default defineConfig({
         </div>
 
         <div>
-          <h5 style={{ fontWeight: '500', fontSize: '14px', marginBottom: '8px' }}>4. Next.js 설정 (next.config.js)</h5>
+          <h5 style={{ fontWeight: '500', fontSize: '14px', marginBottom: '8px', textAlign: 'left' }}>{t('features.reactCompiler.label.guidelineReactComplier4')}</h5>
           <pre style={{ 
             backgroundColor: '#1f2937', 
             color: '#4ade80', 
             padding: '12px', 
             borderRadius: '4px', 
             fontSize: '12px', 
-            overflowX: 'auto' 
+            overflowX: 'auto',
+            textAlign: 'left'
           }}>
 {`module.exports = {
   experimental: {
@@ -426,6 +437,7 @@ export default defineConfig({
  * understand specific advantages and trade-offs associated with certain features or tools.
  */
 const BenefitsAndCaveats = () => {
+  const {t} = useTranslation();
   return (
     <div style={{ 
       display: 'grid', 
@@ -438,27 +450,22 @@ const BenefitsAndCaveats = () => {
         borderRadius: '8px', 
         border: '1px solid #bbf7d0' 
       }}>
-        <h4 style={{ fontWeight: '600', color: '#166534', marginBottom: '16px' }}>✅ 주요 이점</h4>
+        <h4 style={{ fontWeight: '600', color: '#166534', marginBottom: '16px' }}>{`✅ ${t('features.reactCompiler.heading.titleAdvantage')}`}</h4>
         <ul style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '14px', color: '#374151' }}>
-          <li style={{ display: 'flex', alignItems: 'flex-start' }}>
-            <span style={{ marginRight: '8px' }}>•</span>
-            <span><strong>자동 최적화:</strong> useMemo/useCallback 불필요</span>
+          <li style={{ textAlign: 'left' }}>
+            <strong>{t('features.reactCompiler.label.advantage1')}:</strong> {t('features.reactCompiler.description.textAdvantage1')}
           </li>
-          <li style={{ display: 'flex', alignItems: 'flex-start' }}>
-            <span style={{ marginRight: '8px' }}>•</span>
-            <span><strong>의존성 관리:</strong> 의존성 배열 자동 관리</span>
+          <li style={{ textAlign: 'left' }}>
+            <strong>{t('features.reactCompiler.label.advantage2')}:</strong> {t('features.reactCompiler.description.textAdvantage2')}
           </li>
-          <li style={{ display: 'flex', alignItems: 'flex-start' }}>
-            <span style={{ marginRight: '8px' }}>•</span>
-            <span><strong>성능 향상:</strong> 불필요한 리렌더링 자동 방지</span>
+          <li style={{ textAlign: 'left' }}>
+            <strong>{t('features.reactCompiler.label.advantage3')}:</strong> {t('features.reactCompiler.description.textAdvantage3')}
           </li>
-          <li style={{ display: 'flex', alignItems: 'flex-start' }}>
-            <span style={{ marginRight: '8px' }}>•</span>
-            <span><strong>코드 간소화:</strong> 보일러플레이트 코드 감소</span>
+          <li style={{ textAlign: 'left' }}>
+            <strong>{t('features.reactCompiler.label.advantage4')}:</strong> {t('features.reactCompiler.description.textAdvantage4')}
           </li>
-          <li style={{ display: 'flex', alignItems: 'flex-start' }}>
-            <span style={{ marginRight: '8px' }}>•</span>
-            <span><strong>실수 방지:</strong> 잘못된 최적화 패턴 방지</span>
+          <li style={{ textAlign: 'left' }}>
+            <strong>{t('features.reactCompiler.label.advantage5')}:</strong> {t('features.reactCompiler.description.textAdvantage5')}
           </li>
         </ul>
       </div>
@@ -469,27 +476,22 @@ const BenefitsAndCaveats = () => {
         borderRadius: '8px', 
         border: '1px solid #fed7aa' 
       }}>
-        <h4 style={{ fontWeight: '600', color: '#9a3412', marginBottom: '16px' }}>⚠️ 주의사항</h4>
+        <h4 style={{ fontWeight: '600', color: '#9a3412', marginBottom: '16px' }}>{`⚠️ ${t('features.reactCompiler.heading.titleCautions')}`}</h4>
         <ul style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '14px', color: '#374151' }}>
-          <li style={{ display: 'flex', alignItems: 'flex-start' }}>
-            <span style={{ marginRight: '8px' }}>•</span>
-            <span><strong>실험적 기능:</strong> 아직 안정화 단계</span>
+          <li style={{ textAlign: 'left' }}>
+            <strong>{t('features.reactCompiler.label.caution1')}:</strong> {t('features.reactCompiler.description.textCaution1')}
           </li>
-          <li style={{ display: 'flex', alignItems: 'flex-start' }}>
-            <span style={{ marginRight: '8px' }}>•</span>
-            <span><strong>빌드 시간:</strong> 컴파일 시간 증가 가능</span>
+          <li style={{ textAlign: 'left' }}>
+            <strong>{t('features.reactCompiler.label.caution2')}:</strong> {t('features.reactCompiler.description.textCaution2')}
           </li>
-          <li style={{ display: 'flex', alignItems: 'flex-start' }}>
-            <span style={{ marginRight: '8px' }}>•</span>
-            <span><strong>디버깅:</strong> 컴파일된 코드 디버깅 어려움</span>
+          <li style={{ textAlign: 'left' }}>
+            <strong>{t('features.reactCompiler.label.caution3')}:</strong> {t('features.reactCompiler.description.textCaution3')}
           </li>
-          <li style={{ display: 'flex', alignItems: 'flex-start' }}>
-            <span style={{ marginRight: '8px' }}>•</span>
-            <span><strong>호환성:</strong> 일부 라이브러리와 충돌 가능</span>
+          <li style={{ textAlign: 'left' }}>
+            <strong>{t('features.reactCompiler.label.caution4')}:</strong> {t('features.reactCompiler.description.textCaution4')}
           </li>
-          <li style={{ display: 'flex', alignItems: 'flex-start' }}>
-            <span style={{ marginRight: '8px' }}>•</span>
-            <span><strong>학습 곱선:</strong> 내부 동작 이해 필요</span>
+          <li style={{ textAlign: 'left' }}>
+            <strong>{t('features.reactCompiler.label.caution5')}:</strong> {t('features.reactCompiler.description.textCaution5')}
           </li>
         </ul>
       </div>
@@ -523,32 +525,34 @@ const BenefitsAndCaveats = () => {
  */
 const ReactCompilerExample: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'manual' | 'compiler' | 'config' | 'benefits'>('manual');
+  const {t, i18n} = useTranslation();
 
   return (
     <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '24px' }}>
       <div style={{ marginBottom: '32px' }}>
         <h1 style={{ fontSize: '30px', fontWeight: 'bold', color: '#111827', marginBottom: '8px' }}>
-          ⚡ React Compiler (자동 최적화)
+          {`⚡ ${t('features.reactCompiler.title')}`}
         </h1>
         <p style={{ color: '#4b5563' }}>
-          React 19의 React Compiler는 빌드 타임에 코드를 분석하여 자동으로 최적화를 적용합니다.
+          {t('features.reactCompiler.description.textExplainSample')}
         </p>
       </div>
 
       {/* 개념 설명 */}
       <div style={{ backgroundColor: '#eff6ff', padding: '24px', borderRadius: '8px', border: '1px solid #bfdbfe', marginBottom: '32px' }}>
-        <h3 style={{ fontWeight: '600', color: '#1e3a8a', marginBottom: '12px' }}>📚 핵심 개념</h3>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '14px', color: '#374151' }}>
-          <p>
-            <strong>React Compiler</strong>는 JavaScript 코드를 분석하여 자동으로 메모이제이션을 적용하는 
-            빌드 타임 최적화 도구입니다.
+        <h3 style={{ fontWeight: '600', color: '#1e3a8a', marginBottom: '12px' }}>{`📚 ${t('features.reactCompiler.heading.titleCoreConcept')}`}</h3>
+        <div style={{ display: 'flex', flexDirection: 'column', fontSize: '14px', color: '#374151' }}>
+          <p style={{ textAlign: 'left'}}>
+            {t('features.reactCompiler.description.textCoreConcept1')}
           </p>
-          <p style={{ marginTop: '8px' }}>
-            <strong>기존 방식:</strong> 개발자가 수동으로 useMemo, useCallback, React.memo를 추가
-          </p>
-          <p>
-            <strong>Compiler 방식:</strong> 컴파일러가 자동으로 최적화 지점을 찾아 적용
-          </p>
+          <ul style={{ marginTop: 0}}>
+            <li style={{ textAlign: 'left' }}>
+              <strong>{t('features.reactCompiler.heading.titleManualOptimize')}:</strong> {t('features.reactCompiler.description.textCoreConcept2')}
+            </li>
+            <li style={{ textAlign: 'left' }}>
+              <strong>{t('features.reactCompiler.heading.titleAutoOptimize')}:</strong> {t('features.reactCompiler.description.textCoreConcept3')}
+            </li>
+          </ul>
         </div>
       </div>
 
@@ -566,7 +570,7 @@ const ReactCompilerExample: React.FC = () => {
             cursor: 'pointer'
           }}
         >
-          기존 방식
+          {t('features.reactCompiler.heading.titleManualOptimize')}
         </button>
         <button
           onClick={() => setActiveTab('compiler')}
@@ -580,7 +584,7 @@ const ReactCompilerExample: React.FC = () => {
             cursor: 'pointer'
           }}
         >
-          Compiler 방식
+          {t('features.reactCompiler.heading.titleAutoOptimize')}
         </button>
         <button
           onClick={() => setActiveTab('config')}
@@ -594,7 +598,7 @@ const ReactCompilerExample: React.FC = () => {
             cursor: 'pointer'
           }}
         >
-          설정 방법
+          {t('features.reactCompiler.heading.titleGuidelineReactComplier')}
         </button>
         <button
           onClick={() => setActiveTab('benefits')}
@@ -608,7 +612,7 @@ const ReactCompilerExample: React.FC = () => {
             cursor: 'pointer'
           }}
         >
-          이점 & 주의사항
+          {t('features.reactCompiler.heading.titleAdvantageCautions')}
         </button>
       </div>
 
@@ -622,32 +626,46 @@ const ReactCompilerExample: React.FC = () => {
 
       {/* 추가 정보 */}
       <div style={{ marginTop: '32px', backgroundColor: '#faf5ff', padding: '24px', borderRadius: '8px', border: '1px solid #e9d5ff' }}>
-        <h3 style={{ fontWeight: '600', color: '#581c87', marginBottom: '12px' }}>🔍 동작 원리</h3>
+        <h3 style={{ fontWeight: '600', color: '#581c87', marginBottom: '12px' }}>{`🔍 ${t('features.reactCompiler.heading.titleHowItWorks')}`}</h3>
         <ol style={{ display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '14px', color: '#374151', alignItems: 'start', padding: '0 30px 0' }}>
-          <li>
-            <strong>코드 분석:</strong> Babel 플러그인이 컴포넌트 코드를 분석
+          <li style={{ textAlign: 'left' }}>
+            <strong>{t('features.reactCompiler.label.howItWorks1')} : </strong> {t('features.reactCompiler.description.textHowItWorks1')}
           </li>
-          <li>
-            <strong>의존성 추적:</strong> 변수와 함수의 의존성 자동 추적
+          <li style={{ textAlign: 'left' }}>
+            <strong>{t('features.reactCompiler.label.howItWorks2')} : </strong> {t('features.reactCompiler.description.textHowItWorks2')}
           </li>
-          <li>
-            <strong>메모이제이션 삽입:</strong> 필요한 위치에 자동으로 메모이제이션 코드 삽입
+          <li style={{ textAlign: 'left' }}>
+            <strong>{t('features.reactCompiler.label.howItWorks3')} : </strong> {t('features.reactCompiler.description.textHowItWorks3')}
           </li>
-          <li>
-            <strong>최적화 적용:</strong> 불필요한 리렌더링을 방지하는 코드 생성
+          <li style={{ textAlign: 'left' }}>
+            <strong>{t('features.reactCompiler.label.howItWorks4')} : </strong> {t('features.reactCompiler.description.textHowItWorks4')}
           </li>
         </ol>
       </div>
 
       {/* 실습 가이드 */}
-      <div style={{ marginTop: '32px', backgroundColor: '#f9fafb', padding: '24px', borderRadius: '8px', border: '1px solid #e5e7eb' }}>
-        <h3 style={{ fontWeight: '600', color: '#111827', marginBottom: '12px' }}>💡 실습 가이드</h3>
-        <ol style={{ display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '14px', color: '#374151', alignItems: 'start', padding: '0 30px 0' }}>
-          <li>각 탭을 클릭하여 기존 방식과 Compiler 방식을 비교해보세요</li>
-          <li>"카운터" 버튼을 클릭하고 콘솔을 확인하세요</li>
-          <li>자식 컴포넌트가 리렌더링되는지 관찰하세요</li>
-          <li>설정 방법 탭에서 프로젝트에 적용하는 방법을 확인하세요</li>
-          <li>이점과 주의사항을 검토하여 실제 프로젝트 적용을 고려하세요</li>
+      <div style={{
+        marginTop: '32px',
+        backgroundColor: '#f9fafb',
+        padding: '24px',
+        borderRadius: '8px',
+        border: '1px solid #e5e7eb'
+      }}>
+        <h3 style={{fontWeight: '600', color: '#111827', marginBottom: '12px'}}>{`💡 ${t('features.reactCompiler.heading.titleGuidelineTest')}`}</h3>
+        <ol style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '12px',
+          fontSize: '14px',
+          color: '#374151',
+          alignItems: 'start',
+          padding: '0 30px 0'
+        }}>
+          <li>{t('features.reactCompiler.description.textGuidelineTest1')}</li>
+          <li>{t('features.reactCompiler.description.textGuidelineTest2')}</li>
+          <li>{t('features.reactCompiler.description.textGuidelineTest3')}</li>
+          <li>{t('features.reactCompiler.description.textGuidelineTest4')}</li>
+          <li>{t('features.reactCompiler.description.textGuidelineTest5')}</li>
         </ol>
       </div>
     </div>

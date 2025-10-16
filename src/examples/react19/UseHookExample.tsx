@@ -1,5 +1,7 @@
 import { use, useState, createContext, Suspense, Component } from 'react';
 import type {ReactNode} from 'react';
+import { useTranslation} from "react-i18next";
+import {t} from "i18next";
 
 /**
  * React 19 use 훅 예제
@@ -37,18 +39,19 @@ interface Post {
 /**
  * 사용자 데이터를 가져오는 Promise 함수
  */
-async function fetchUser(userId: number): Promise<User> {
+async function fetchUser(userId: number, t: (key: string, options?: Record<string, unknown>) => string ): Promise<User> {
+
   // 네트워크 지연 시뮬레이션
   await new Promise(resolve => setTimeout(resolve, 1000));
   
   // 랜덤 에러 시뮬레이션 (50% 확률)
   if (Math.random() < 0.5) {
-    throw new Error('사용자 데이터를 불러오는데 실패했습니다.');
+    throw new Error(t('features.useHook.response.failedGetUserData'));
   }
   
   return {
     id: userId,
-    name: `사용자 ${userId}`,
+    name: `${t('common.user')} ${userId}`,
     email: `user${userId}@example.com`,
     avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${userId}`
   };
@@ -57,19 +60,26 @@ async function fetchUser(userId: number): Promise<User> {
 /**
  * 게시물 데이터를 가져오는 Promise 함수
  */
-async function fetchPosts(userId: number): Promise<Post[]> {
+async function fetchPosts(userId: number, t: (key: string, options?: Record<string, unknown>) => string): Promise<Post[]> {
   // 네트워크 지연 시뮬레이션
   await new Promise(resolve => setTimeout(resolve, 1000));
 
   // 랜덤 에러 시뮬레이션 (50% 확률)
   if (Math.random() < 0.5) {
-    throw new Error('게시물 데이터를 불러오는데 실패했습니다.');
+    throw new Error(t('features.useHook.response.failedGetPostData'));
   }
   
   return Array.from({ length: 3 }, (_, index) => ({
     id: index + 1,
-    title: `게시물 ${index + 1} - 사용자 ${userId}`,
-    body: `이것은 사용자 ${userId}의 ${index + 1}번째 게시물입니다. React 19의 use 훅을 사용하여 데이터를 불러왔습니다.`,
+    title: t('features.useHook.data.postTitle', {
+      userId: userId,
+      postId: index + 1
+    }),
+    // body: `이것은 사용자 ${userId}의 ${index + 1}번째 게시물입니다. React 19의 use 훅을 사용하여 데이터를 불러왔습니다.`,
+    body: t('features.useHook.data.postContent', {
+      userId: userId,
+      postId: index + 1
+    }),
     userId
   }));
 }
@@ -85,6 +95,7 @@ async function fetchPosts(userId: number): Promise<Post[]> {
  */
 function ThemeDisplay() {
   const { theme, toggleTheme } = use(ThemeContext);
+  const { t } = useTranslation();
   
   return (
     <div style={{ 
@@ -94,7 +105,7 @@ function ThemeDisplay() {
       borderRadius: '4px',
       marginBottom: '20px'
     }}>
-      <h4>🧩 현재 테마: {theme === 'light' ? '라이트 모드' : '다크 모드'}</h4>
+      <h4>{`🧩 ${t('features.useHook.label.textCurrentTheme')}`}: {theme === 'light' ? t('features.useHook.label.textLightMode') : t('features.useHook.label.textDarkMode')}</h4>
       <button 
         onClick={toggleTheme}
         style={{
@@ -106,10 +117,10 @@ function ThemeDisplay() {
           cursor: 'pointer'
         }}
       >
-        테마 변경
+        {t('features.useHook.label.changeTheme')}
       </button>
       <p style={{ marginTop: '10px', fontSize: '14px', opacity: 0.8 }}>
-        💡 use 훅으로 Context를 사용하고 있습니다.
+        {`💡 ${t('features.useHook.description.textExplainExample')}`}
       </p>
     </div>
   );
@@ -303,7 +314,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
           borderRadius: '4px',
           textAlign: 'center'
         }}>
-          <h4 style={{ margin: '0 0 10px 0' }}>❌ 오류 발생</h4>
+          <h4 style={{ margin: '0 0 10px 0' }}>{`❌ ${t('common.error')}`}</h4>
           <p style={{ margin: '0 0 15px 0' }}>{this.state.error.message}</p>
           <button 
             onClick={this.resetError}
@@ -316,7 +327,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
               cursor: 'pointer'
             }}
           >
-            다시 시도
+            {t('common.retry')}
           </button>
         </div>
       );
@@ -344,11 +355,13 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
  *
  */
 export default function UseHookExample() {
+  const { t } = useTranslation();
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
   const [userId, setUserId] = useState(1);
-  const [userPromise, setUserPromise] = useState(() => fetchUser(1));
-  const [postsPromise, setPostsPromise] = useState(() => fetchPosts(1));
+  const [userPromise, setUserPromise] = useState(() => fetchUser(1, t));
+  const [postsPromise, setPostsPromise] = useState(() => fetchPosts(1, t));
   // const [errorBoundaryKey, setErrorBoundaryKey] = useState(0);
+
 
   /**
    * Provider로 제공할 Context 함수
@@ -378,8 +391,8 @@ export default function UseHookExample() {
    */
   const loadUserData = (newUserId: number) => {
     setUserId(newUserId);
-    setUserPromise(fetchUser(newUserId));
-    setPostsPromise(fetchPosts(newUserId));
+    setUserPromise(fetchUser(newUserId, t));
+    setPostsPromise(fetchPosts(newUserId, t));
     // Error Boundary 리셋
     // setErrorBoundaryKey(prev => prev + 1);
   };
@@ -400,9 +413,9 @@ export default function UseHookExample() {
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <div style={{ padding: '20px', border: '1px solid #ccc', margin: '10px' }}>
-        <h3>React 19 use 훅 예제</h3>
+        <h3>{t('features.useHook.title')}</h3>
         <p style={{ color: '#666', marginBottom: '20px' }}>
-          use 훅을 사용하여 Promise와 Context를 처리하는 예제입니다.
+          {t('features.useHook.description.textExplainExample')}
         </p>
 
         {/* 테마 변경 */}
@@ -410,8 +423,8 @@ export default function UseHookExample() {
 
         {/* 사용자 선택 */}
         <div style={{ marginBottom: '20px' }}>
-          <h4>사용자 선택:</h4>
-          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+          <h4>{t('features.useHook.label.selectUser')}</h4>
+          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', justifyContent: 'space-around' }}>
             {[1, 2, 3, 4, 5].map(id => (
               <button
                 key={id}
@@ -425,7 +438,7 @@ export default function UseHookExample() {
                   cursor: 'pointer'
                 }}
               >
-                사용자 {id}
+                {`${t('common.user')} ${id}`}
               </button>
             ))}
           </div>
@@ -438,12 +451,12 @@ export default function UseHookExample() {
         >
           <div>
             {/* 사용자 프로필 */}
-            <Suspense fallback={<LoadingSpinner message="사용자 정보를 불러오는 중..." />}>
+            <Suspense fallback={<LoadingSpinner message={t('features.useHook.label.loadingUserData')} />}>
               <UserProfile userPromise={userPromise} />
             </Suspense>
 
             {/* 게시물 목록 */}
-            <Suspense fallback={<LoadingSpinner message="게시물을 불러오는 중..." />}>
+            <Suspense fallback={<LoadingSpinner message={t('features.useHook.label.loadingPostData')} />}>
               <PostsList postsPromise={postsPromise} />
             </Suspense>
           </div>
@@ -456,13 +469,13 @@ export default function UseHookExample() {
           backgroundColor: '#f8f9fa',
           borderRadius: '4px',
         }}>
-          <h4 style={{ margin: '0 0 15px 0'}}>✅ use 훅의 주요 특징</h4>
+          <h4 style={{ margin: '0 0 15px 0'}}>{`✅ ${t('features.useHook.heading.titleFeaturesUseHook')}`}</h4>
           <ul style={{ margin: 0, paddingLeft: '20px' }}>
-            <li style={{ textAlign: 'left'}}><strong>Promise 처리:</strong> async/await 없이 Promise를 직접 사용</li>
-            <li style={{ textAlign: 'left'}}><strong>Context 사용:</strong> useContext 대신 use 훅으로 Context 접근</li>
-            <li style={{ textAlign: 'left'}}><strong>Suspense 통합:</strong> Promise가 해결될 때까지 자동으로 Suspense 트리거</li>
-            <li style={{ textAlign: 'left'}}><strong>조건부 사용:</strong> 조건문 내에서도 사용 가능 (기존 훅 규칙과 다름)</li>
-            <li style={{ textAlign: 'left'}}><strong>에러 처리:</strong> Promise reject 시 가장 가까운 Error Boundary로 전파</li>
+            <li style={{ textAlign: 'left'}}><strong>{t('features.useHook.label.textFeaturesUseHook1')}:</strong> {t('features.useHook.description.textFeaturesUseHook1')}</li>
+            <li style={{ textAlign: 'left'}}><strong>{t('features.useHook.label.textFeaturesUseHook2')}:</strong> {t('features.useHook.description.textFeaturesUseHook2')}</li>
+            <li style={{ textAlign: 'left'}}><strong>{t('features.useHook.label.textFeaturesUseHook3')}:</strong> {t('features.useHook.description.textFeaturesUseHook3')}</li>
+            <li style={{ textAlign: 'left'}}><strong>{t('features.useHook.label.textFeaturesUseHook4')}:</strong> {t('features.useHook.description.textFeaturesUseHook4')}</li>
+            <li style={{ textAlign: 'left'}}><strong>{t('features.useHook.label.textFeaturesUseHook5')}:</strong> {t('features.useHook.description.textFeaturesUseHook5')}</li>
           </ul>
         </div>
       </div>

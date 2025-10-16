@@ -1,0 +1,354 @@
+{
+  "common": {
+    "welcome": "ようこそ",
+    "hello": "ようこそ",
+    "goodbye": "さようなら",
+    "yes": "はい",
+    "no": "いいえ",
+    "save": "保存",
+    "cancel": "キャンセル",
+    "delete": "削除",
+    "edit": "編集",
+    "loading": "loading...",
+    "error": "エラーが発生しました",
+    "click": "クリック",
+    "login": "ログイン",
+    "email": "メールアドレス",
+    "password": "パスワード",
+    "user": "ユーザー",
+    "admin": "管理者",
+    "profile": "プロフィール",
+    "name": "名前",
+    "logout": "ログアウト",
+    "role": "ロール",
+    "appname": "React 19 学習プロジェクト",
+    "increase": "増やす",
+    "decrease": "減らす",
+    "reset": "リセット",
+    "count": "カウント",
+    "enterName": "名前を入力してください",
+    "enterEmail": "メールアドレスを入力してください",
+    "enterMessage": "メッセージを入力してください",
+    "commentFile": "ファイルの説明を入力してください",
+    "show": "表示",
+    "hide": "非表示",
+    "language": "言語",
+    "timer": "タイマー",
+    "second": "秒",
+    "uploading": "アップロード中...",
+    "upload": "ファイルをアップロード",
+    "submitting": "送信中...",
+    "temporary": "臨時",
+    "send": "送信",
+    "retry": "Retry",
+    "delete": "削除",
+    "title": "タイトル",
+    "content": "内容"
+  },
+  "appInfo": {
+    "description": "体系的に構成されたReactの学習サンプルを通して、段階的に学習してみましょう",
+    "subtitle": "React 19 学習サンプル",
+    "footerTitle": "React 19、TypeScript、Viteで構成された学習用プロジェクト"
+  },
+  "error": {
+    "checkNameEmail": "名前とメールアドレスを入力してください",
+    "checkEmail": "有効なメールアドレスを入力してください",
+    "selectFile": "ファイルを選択してください",
+    "checkServer": "サーバーエラーが発生しました。再度お試しください",
+    "checkClient": "クライアントエラーが発生しました。再度お試しください",
+    "httpError": "HTTP エラーが発生しました",
+    "httpResponse" : {
+      "400": "不正なリクエストです。(400 Bad Request)",
+      "401": "認証が必要です。(401 Unauthorized)",
+      "403": "アクセス権がありません。(403 Forbidden)",
+      "404": "要求されたリソースが見つかりません。(404 Not Found)",
+      "408": "リクエストがタイムアウトしました。(408 Request Timeout)",
+      "429": "リクエストが多すぎます。しばらくしてから再試行してください。(429 Too Many Requests)",
+      "500": "サーバー内部エラーが発生しました。(500 Internal Server Error)",
+      "502": "サーバーゲートウェイエラーです。(502 Bad Gateway)",
+      "503": "サービスを一時的に利用できません。(503 Service Unavailable)",
+      "504": "ゲートウェイのタイムアウトです。(504 Response Timeout)"
+    }
+  },
+  "features": {
+    "useState": {
+      "title": "useState 基本サンプル",
+      "heading": {
+        "titleCounter": "カウンター",
+        "titleTextInput": "テキスト入力",
+        "titleToggleButton": "トグルボタン"
+      },
+      "label": {
+        "textToggle": "このテキストはトグル可能です。"
+      }
+    },
+    "useEffect": {
+      "title": "useEffect 基本サンプル",
+      "heading": {
+        "titleWindowTitle": "カウント変更によるウィンドウタイトル変更",
+        "titleWindowSize": "ウィンドウサイズ変更",
+        "titleTimer": "タイマー"
+      },
+      "label": {
+        "textAdjustWindowSize": "ウィンドウサイズを調整して、変化を確認してください",
+        "textWindowSize": "ウィンドウサイズ",
+        "second_zero": "{{count}} 秒",
+        "second_one": "{{count}} 秒",
+        "second_other": "{{count}} 秒"
+      }
+    },
+    "useContext": {
+      "title": "Context 基本サンプル",
+      "heading": {
+        "titleMainCotent": "メインコンテンツ",
+        "titleNestedCotent": "ネストコンテンツ",
+        "titleAdvantage": "Contextの強み",
+        "titleCaution": "Contextの注意点"
+      },
+      "label": {
+        "textDarkMode": "ダークモード",
+        "textLightMode": "ライトモード",
+        "textCurrentTheme": "現在テーマ"
+      },
+      "description": {
+        "textMainContent": "このコンポーネントはHeaderコンポーネントと直接の親子関係はありませんが、Contextを通じて同じテーマ状態を共有しています。",
+        "textNestedContent": "ネストされたコンポーネントからでもContextにアクセスできます！",
+        "textAdvantage1": "Prop drilling（プロップの多段渡し）を防止",
+        "textAdvantage2": "グローバルな状態管理が可能",
+        "textAdvantage3": "コンポーネント間のデータ共有を簡素化",
+        "textAdvantage4": "コードの可読性を向上",
+        "textCaution1": "Contextの値が変更されると、すべてのConsumerが再レンダーされる",
+        "textCaution2": "過度な使用はコンポーネントの再利用性を低下させる可能性がある",
+        "textCaution3": "複雑な状態管理には、ReduxやZustandなどのライブラリを検討する"
+      }
+    },
+    "authUseContext": {
+      "title": "Auth Context サンプル",
+      "heading": {
+        "protectedContent": "保護されたコンテンツ",
+        "adminPrivileges": "管理者権限",
+        "titleFeaturesAuthContext": "Auth Contextの特徴"
+      },
+      "label": {
+        "submitting": "ログイン中...",
+        "testAccount": "テストアカウント"
+      },
+      "message": {
+        "protectedContent": "ようこそ、{{name}}さん！このコンテンツは認証されたユーザーのみ閲覧できます",
+        "adminPrivileges": "管理者のみ閲覧可能です",
+        "loginFailed": "ログインに失敗しました。メールアドレスとパスワードを確認してください",
+        "loginRequired": "ログインが必要です"
+      },
+      "description": {
+        "textFeaturesAuthContext1": "グローバルな認証状態の管理",
+        "textFeaturesAuthContext2": "ログイン／ログアウト機能",
+        "textFeaturesAuthContext3": "役割（ロール）に基づくアクセス制御",
+        "textFeaturesAuthContext4": "ローカルストレージとの連携",
+        "textFeaturesAuthContext5": "ローディング状態の管理",
+        "textFeaturesAuthContext6": "保護されたルート／コンポーネントの実装"
+      }
+    },
+    "actions": {
+      "title": "React 19 Actions サンプル",
+      "heading": {
+        "titleFeaturesAuthActions": "Auth Actionsの特徴"
+      },
+      "label": {
+        "submitting": "送信中...",
+        "submit": "送信"
+      },
+      "response": {
+        "submitSuccess": "{{name}}さん、送信が成功しました！"
+      }
+    },
+    "useFormStatus": {
+      "title": "useFormStatus サンプル",
+      "label": {
+        "inputFile": "ファイル選択",
+        "commentFile": "コメント入力",
+        "formStatus": "フォームステータス",
+        "httpMethod": "HTTPメソッド",
+        "submitting": "送信中",
+        "waiting": "待機中"
+      },
+      "description": {
+        "textUseFormStatus": "フォーム内の送信状態を追跡するサンプルです",
+        "uploadingFile": "ファイルのアップロード中..."
+      },
+      "response": {
+        "submitSuccess": "{{name}} ({{size}}KB) の送信が成功しました！"
+      }
+    },
+    "optimistic": {
+      "title": "オプティミスティック更新サンプル",
+      "label": {
+        "enterMessage": "ようこそ！メッセージを入力してください",
+        "saveServer": "サーバーに保存"
+      },
+      "description": {
+        "textOptimistic": "サーバー（非同期）に保存する前に、入力したデータを先にUIに反映するサンプルです"
+      }
+    },
+    "useHook": {
+      "title": "use Hook サンプル",
+      "heading": {
+        "titleFeaturesUseHook": "use Hookの主な特徴"
+      },
+      "label": {
+        "textDarkMode": "ダークモード",
+        "textLightMode": "ライトモード",
+        "textCurrentTheme": "現在テーマ",
+        "changeTheme": "テーマ変更",
+        "selectUser": "ユーザー選択",
+        "textFeaturesUseHook1": "Promise 処理",
+        "textFeaturesUseHook2": "Context 利用",
+        "textFeaturesUseHook3": "Suspenseとの統合",
+        "textFeaturesUseHook4": "条件付き使用",
+        "textFeaturesUseHook5": "エラー処理"
+      },
+      "description": {
+        "textExplainExample": "useフックを使用してPromiseとContextを処理する例です",
+        "textChangeThemeUsingHook": "useフックを通じてContextを使用しています",
+        "textFeaturesUseHook1": "async/awaitを使わずにPromiseを直接使用",
+        "textFeaturesUseHook2": "useContextの代わりにuseフックでContextにアクセス",
+        "textFeaturesUseHook3": "Promiseが解決されるまで自動的にSuspenseをトリガー",
+        "textFeaturesUseHook4": "条件文の中でも使用可能（従来のフック規則とは異なる）",
+        "textFeaturesUseHook5": "Promiseがrejectされた場合、最も近いError Boundaryにエラーが伝播"
+      },
+      "response": {
+        "failedGetUserData": "ユーザーデータの取得に失敗しました。",
+        "failedGetPostData": "投稿データの取得に失敗しました。"
+      },
+      "data": {
+        "postTitle": "投稿 {{postId}} - ユーザー {{userId}}",
+        "postContent": "これはユーザー{{userId}}の{{postId}}番目の投稿です。React 19のuseフックを使用してデータを取得しました。"
+      }
+    },
+    "customHook": {
+      "title": "Custom Hook サンプル",
+      "heading": {
+        "titleUseCounter": "useCounter Hook",
+        "titleUseLocalStorage": "useLocalStorage Hook",
+        "titleUseFetch": "useFetch Hook"
+      },
+      "label": {
+        "inputNumber": "数字入力",
+        "savedName": "保存された名前",
+        "nothing": "なし",
+        "enterName": "名前入力 (自動で保存されます)",
+        "error": "エラー"
+      }
+    },
+    "reactCompiler": {
+      "title": "React Compiler サンプル",
+      "heading": {
+        "titleCoreConcept": "概念",
+        "titleManualOptimize": "既存の方法 (手動最適化)",
+        "titleAutoOptimize": "React Compiler (自動最適化)",
+        "titleGuidelineReactComplier": "React Compiler 設定方法",
+        "titleAdvantage": "主な利点",
+        "titleCautions": "注意点",
+        "titleAdvantageCautions": "利点 & 注意点",
+        "titleHowItWorks": "動作原理",
+        "titleGuidelineTest": "テストガイド"
+      },
+      "label": {
+        "resultHeavyComputation": "重い計算の結果",
+        "childCounter": "子カウンター",
+        "parentCounter": "親カウンター",
+        "textManualOptimize": "React.memo, useCallback 利用",
+        "textAutoOptimize": "コンパイラが自動的にメモ化を適用",
+        "guidelineReactComplier1": "1. パッケージのインストール",
+        "guidelineReactComplier2": "2. Babel 設定 (babel.config.js)",
+        "guidelineReactComplier3": "3. Vite 設定 (vite.config.ts)",
+        "guidelineReactComplier4": "4. Next.js 設定 (next.config.js)",
+        "advantage1": "自動最適化",
+        "advantage2": "依存関係の管理",
+        "advantage3": "パフォーマンス向上",
+        "advantage4": "コードの簡素化",
+        "advantage5": "ミス防止",
+        "caution1": "実験的な機能",
+        "caution2": "ビルド時間",
+        "caution3": "デバッグ",
+        "caution4": "互換性",
+        "caution5": "学習コスト",
+        "howItWorks1": "コード解析",
+        "howItWorks2": "依存関係の追跡",
+        "howItWorks3": "メモ化の挿入",
+        "howItWorks4": "最適化の適用"
+      },
+      "description": {
+        "textExplainSample": "React 19のReact Compilerは、ビルド時にコードを解析し、自動的に最適化を適用します。",
+        "textCoreConcept1": "React Compilerは、JavaScriptコードを解析して自動的にメモ化を適用するビルド時最適化ツールです。",
+        "textCoreConcept2": "開発者が手動でuseMemo、useCallback、React.memoを追加",
+        "textCoreConcept3": "コンパイラが自動的に最適化ポイントを検出して適用",
+        "textHeavyComputation1": "カウンターを増やしても、React.memoとuseCallbackの適用により子コンポーネントは再レンダーされません。",
+        "textHeavyComputation2": "カウンターを増やしても、React Compilerの適用により子コンポーネントは再レンダーされません。",
+        "textAdvantage1": "useMemo/useCallbackが不要",
+        "textAdvantage2": "依存配列を自動で管理",
+        "textAdvantage3": "不要な再レンダーを自動的に防止",
+        "textAdvantage4": "ボイラープレートコードを削減",
+        "textAdvantage5": " 誤った最適化パターンを防止",
+        "textCaution1": "まだ安定化段階",
+        "textCaution2": "コンパイル時間が長くなる可能性",
+        "textCaution3": "コンパイル後のコードのデバッグが難しい場合あり",
+        "textCaution4": "一部のライブラリと衝突する可能性",
+        "textCaution5": "内部の動作を理解する必要",
+        "textHowItWorks1": "Babelプラグインがコンポーネントコードを解析",
+        "textHowItWorks2": "変数や関数の依存関係を自動で追跡",
+        "textHowItWorks3": "必要な箇所に自動的にメモ化コードを挿入",
+        "textHowItWorks4": "不要な再レンダーを防ぐコードを生成",
+        "textGuidelineTest1": "各タブをクリックして、従来の方式とCompiler方式を比較してみましょう",
+        "textGuidelineTest2": "「カウンター」ボタンをクリックして、コンソールを確認してください。",
+        "textGuidelineTest3": "子コンポーネントが再レンダーされるか観察してみましょう",
+        "textGuidelineTest4": "「設定方法」タブで、プロジェクトへの適用方法を確認してください",
+        "textGuidelineTest5": "利点と注意点を確認し、実際のプロジェクトへの適用を検討してください"
+      }
+    }
+  },
+  "i18next": {
+    "title": "react-i18nextを活用した多国語サポート",
+    "currentLanguage": "現在言語",
+    "selectLanguage": "言語選択",
+    "korean": "韓国語",
+    "english": "英語",
+    "japanese": "日本語",
+    "description": "react-i18nextは、 Reactアプリケーションの多国語サポートのライブラリーです",
+    "features": {
+      "title": "メイン機能",
+      "feature1": "ネームスペースを利用するトランススレーションファイルをサポート",
+      "feature2": "lazy loading、コードスプリッティングをサポート",
+      "feature3": "複数形、 日にち, 数字 フォーマット",
+      "feature4": "ネストオブジェクト参照、 インターポレーション 処理",
+      "feature5": "TypeScriptサポート",
+      "feature6": "SSRサポート"
+    },
+    "interpolation": {
+      "title": "インターポレーション 処理 (Interpolation)",
+      "greeting": "ようこそ, {{name}}さん",
+      "welcome": "ようこそ、{{appName}}！",
+      "userInfo": "現在、 {{count}} 個のメッセージがあります",
+      "enterName": "名前を入力してください"
+    },
+    "pluralization": {
+      "title": "複数形 処理 (Pluralization)",
+      "labelMessage": "メッセージ (i18next.pluralization.message_*)",
+      "message_zero": "メッセージがありません",
+      "message_one": "メッセージ　{{count}} 個",
+      "message_other": "メッセージ　{{count}} 個"
+    },
+    "nested": {
+      "title": "ネストオブジェクト参照 (Nesting)",
+      "user": {
+        "profile": "ユーザープロファイル",
+        "settings": "設定",
+        "logout": "ログアウト"
+      },
+      "admin": {
+        "dashboard": "管理者ダッシュボード",
+        "users": "ユーザー管理",
+        "settings": "システム設定"
+      }
+    }
+  }
+}

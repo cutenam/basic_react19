@@ -1,6 +1,7 @@
 import { useActionState, useEffect, useState } from 'react';
 import { useFormStatus } from 'react-dom';
 import Button from "../../components/common/Button";
+import { useTranslation } from 'react-i18next';
 
 interface uploadState {
   success?: string;
@@ -27,8 +28,12 @@ interface uploadState {
  *
  */
 export default function FormStatusExample() {
-  const [state, formAction] = useActionState(uploadFile, null);
+  // const [state, formAction] = useActionState(uploadFile, null);
+  const [state, formAction] = useActionState<uploadState | null, FormData>(
+    (prevState, formData) => uploadFile(prevState, formData, t),
+    null)
   const [showMessage, setShowMessage] = useState(true);
+  const { t } = useTranslation();
 
   // 알림 메시지 자동 비표시 (3초 후 메시지 숨김)
   useEffect(() => {
@@ -36,7 +41,7 @@ export default function FormStatusExample() {
       setShowMessage(true);
       const timer = setTimeout(() => {
         setShowMessage(false);
-      }, 3000);
+      }, 1000);
 
       return () => clearTimeout(timer);
     }
@@ -44,14 +49,14 @@ export default function FormStatusExample() {
   
   return (
     <div style={{ padding: '20px', border: '1px solid #ccc', margin: '10px' }}>
-      <h3>useFormStatus 예제</h3>
+      <h3>{t('features.useFormStatus.title')}</h3>
       <p style={{ color: '#666', marginBottom: '20px' }}>
-        폼 내부 컴포넌트에서 제출 상태를 추적하는 예제입니다.
+        {t('features.useFormStatus.description.textUseFormStatus')}
       </p>
-      <form action={formAction} style={{ display: 'flex', flexDirection: 'column', gap: '15px', maxWidth: '400px' }}>
+      <form action={formAction} style={{ display: 'flex', flexDirection: 'column', gap: '15px', maxWidth: '400px', justifyContent: 'center', margin: '0 auto' }}>
         <div>
-          <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
-            파일 선택:
+          <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold'}}>
+            {t('features.useFormStatus.label.inputFile')}
           </label>
           <input 
             name="file" 
@@ -65,14 +70,13 @@ export default function FormStatusExample() {
             }}
           />
         </div>
-        
         <div>
           <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
-            파일 설명:
+            {t('features.useFormStatus.label.commentFile')}
           </label>
           <textarea 
             name="description" 
-            placeholder="파일에 대한 설명을 입력하세요"
+            placeholder={t('common.commentFile')}
             rows={3}
             style={{ 
               padding: '8px', 
@@ -147,17 +151,21 @@ export default function FormStatusExample() {
  * Introduces a delay to mimic the upload process and has a 50% chance of simulating an error.
  * A promise that resolves to an object containing either an error message or a success message with file details.
  */
-async function uploadFile(_prevState: uploadState | null, formData: FormData): Promise<uploadState> {
+async function uploadFile(
+  _prevState: uploadState | null,
+  formData: FormData,
+  t: (key: string, options?: Record<string, unknown>) => string)
+  : Promise<uploadState> {
   const file = formData.get('file') as File;
   const description = formData.get('description') as string;
 
   // 파일 선택 여부를 먼저 검증 (즉시 반환)
   if (!file || file.size === 0) {
-    return { error: '👉🏻 파일을 선택해주세요.' };
+    return { error: `👉🏻 ${t('error.selectFile')}` };
   }
 
   if (!description.trim()) {
-    return { error: '👉🏻 파일 설명을 입력해주세요.' };
+    return { error: `👉🏻 ${t('common.commentFile')}` };
   }
 
   // 검증 통과 후에만 파일 업로드 시뮬레이션 (3초 지연)
@@ -169,12 +177,13 @@ async function uploadFile(_prevState: uploadState | null, formData: FormData): P
   if (isError) {
     // 에러 발생 시: 이전 상태 유지 + 에러 메시지 설정
     return {
-      error: '❌ 서버 오류가 발생했습니다. 다시 시도해주세요.'
+      error: `❌ ${t('error.checkServer')}`
     };
   }
 
   return {
-    success: `✅ 파일 "${file.name}" (${Math.round(file.size / 1024)}KB)이 성공적으로 업로드되었습니다!`,
+    // success: `✅ 파일 "${file.name}" (${Math.round(file.size / 1024)}KB)이 성공적으로 업로드되었습니다!`,
+    success: `✅ ${t('features.useFormStatus.response.submitSuccess', {name: file.name, size: Math.round(file.size / 1024)})}`,
     fileName: file.name,
     fileSize: file.size
   };
@@ -197,6 +206,7 @@ function SubmitButton() {
    *    method : HTTP 메서드, 'POST' 또는 'PUT' 등
    */
   const { pending, data, method } = useFormStatus();
+  const { t } = useTranslation();
 
   return (
     <div>
@@ -211,15 +221,15 @@ function SubmitButton() {
           cursor: pending  ? 'not-allowed' : 'pointer'
         }}
       >
-        {(pending)? '업로드 중...' : '파일 업로드'}
+        {(pending)? t('common.uploading') : t('common.upload')}
       </Button>
 
       {/* 폼 상태 정보 표시 */}
       <ul style={{ marginTop: '10px', fontSize: '12px', color: '#666' }}>
-        <li style={{ textAlign: 'left' }}><strong>폼 상태:</strong> {pending ? '제출 중' : '대기 중'}</li>
-        <li style={{ textAlign: 'left' }}><strong>HTTP 메서드:</strong> {method || 'POST'}</li>
+        <li style={{ textAlign: 'left' }}><strong>{t('features.useFormStatus.label.formStatus')}:</strong> {pending ? t('features.useFormStatus.label.submitting') : t('features.useFormStatus.label.waiting')}</li>
+        <li style={{ textAlign: 'left' }}><strong>{t('features.useFormStatus.label.httpMethod')}:</strong> {method || 'POST'}</li>
         {data && (
-          <li style={{ textAlign: 'left', color: '#FA6666'}}><strong>제출된 데이터:</strong> {(data.get('file') as File)?.name || '없음'}</li>
+          <li style={{ textAlign: 'left', color: '#FA6666'}}><strong>{t('features.useFormStatus.label.submitData')}:</strong> {(data.get('file') as File)?.name || t('features.useFormStatus.label.notExist')}</li>
         )}
       </ul>
     </div>
@@ -235,6 +245,7 @@ function SubmitButton() {
  */
 function ProgressIndicator() {
   const { pending, data } = useFormStatus();
+  const { t } = useTranslation();
 
   // pending이 false이거나 data가 없으면 표시하지 않음
   if (!pending || !data) return null;
@@ -261,7 +272,7 @@ function ProgressIndicator() {
           animation: 'spin 1s linear infinite'
         }}></div>
         <span style={{ color: '#1976d2', fontWeight: 'bold' }}>
-          파일을 업로드하고 있습니다...
+          {t('features.useFormStatus.description.uploadingFile')}
         </span>
       </div>
       <div style={{

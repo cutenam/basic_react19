@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Button from "../../components/common/Button.tsx";
+import { useTranslation } from 'react-i18next';
 
 /**
  * useState 기본 사용법 예제
@@ -15,41 +16,43 @@ export default function StateExample() {
   const [count, setCount] = useState(0);
   const [name, setName] = useState('');
   const [isVisible, setIsVisible] = useState(true);
+  const { t } = useTranslation();
 
   return (
     <div style={{ padding: '20px', border: '1px solid #ccc', margin: '10px' }}>
-      <h2>useState 기본 예제</h2>
+      <h2>{t('features.useState.title')}</h2>
       
       {/* 숫자 상태 */}
-      <h3>1. 카운터</h3>
+      <h3>{`1. ${t('features.useState.heading.titleCounter')}`}</h3>
       <div style={{ marginBottom: '15px' }}>
-        <p>카운트: {count}</p>
-        <Button variant='function' size='medium' style={{ border: '1px solid #dee2e6', }} onClick={() => setCount(count + 1)}>증가</Button>
-        <Button variant='function' size='medium' style={{ marginLeft: '5px', border: '1px solid #dee2e6', }} onClick={() => setCount(count - 1)}>감소</Button>
-        <Button variant='function' size='medium' style={{ marginLeft: '5px', border: '1px solid #dee2e6', }} onClick={() => setCount(0)}>리셋</Button>
+        <p>{t('common.count')}: {count}</p>
+        <Button variant='function' size='medium' style={{ border: '1px solid #dee2e6', }} onClick={() => setCount(count + 1)}>{t('common.increase')}</Button>
+        <Button variant='function' size='medium' style={{ marginLeft: '5px', border: '1px solid #dee2e6', }} onClick={() => setCount(count - 1)}>{t('common.decrease')}</Button>
+        <Button variant='function' size='medium' style={{ marginLeft: '5px', border: '1px solid #dee2e6', }} onClick={() => setCount(0)}>{t('common.reset')}</Button>
       </div>
 
       {/* 문자열 상태 */}
-      <h3>2. input 텍스트 입력</h3>
+      <h3>{`2. ${t('features.useState.heading.titleTextInput')}`}</h3>
       <div style={{ marginBottom: '15px' }}>
-        <p>이름: {name || '이름을 입력하세요'}</p>
+        <p>{t('common.name')}: {name || t('common.enterName')}</p>
         <input 
           type="text" 
           value={name}
           onChange={(e) => setName(e.target.value)}
-          placeholder="이름을 입력하세요"
+          placeholder={t('common.enterName')}
+          style={{ padding: '10px', marginRight: '10px', fontSize: '16px', border: '1px solid #ccc', borderRadius: '4px' }}
         />
       </div>
 
       {/* Boolean 상태 */}
-      <h3>3. 토글 버튼</h3>
+      <h3>{`3. ${t('features.useState.heading.titleToggleButton')}`}</h3>
       <div>
         <Button variant='function' size='medium' style={{ border: '1px solid #dee2e6', }} onClick={() => setIsVisible(!isVisible)}>
-          {isVisible ? '숨기기' : '보이기'}
+          {isVisible ? t('common.hide') : t('common.show')}
         </Button>
         {isVisible && (
-          <p style={{ color: 'blue', marginTop: '10px' }}>
-            이 텍스트는 토글됩니다!
+          <p style={{ color: '#3230B6', fontWeight: 'bold', fontSize: '16px', marginTop: '10px', backgroundColor: '#E8F4FF', padding: '10px', borderRadius: '4px' }}>
+            {t('features.useState.label.textToggle')}
           </p>
         )}
       </div>

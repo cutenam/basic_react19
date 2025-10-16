@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 import type { ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';;
 
 interface ThemeContextType {
   theme: 'light' | 'dark';
@@ -98,6 +99,7 @@ const useTheme = () => {
 const Header: React.FC = () => {
   // useContext 호출, Provider 값들 사용가능
   const { theme, toggleTheme } = useTheme();
+  const { t } = useTranslation();
   
   return (
     <header style={{
@@ -106,7 +108,7 @@ const Header: React.FC = () => {
       padding: '1rem',
       borderBottom: `2px solid ${theme === 'light' ? '#eee' : '#555'}`
     }}>
-      <h2>Context 예제</h2>
+      <h2>{t('features.useContext.title')}</h2>
       <button 
         onClick={toggleTheme}
         style={{
@@ -118,7 +120,7 @@ const Header: React.FC = () => {
           cursor: 'pointer'
         }}
       >
-        {theme === 'light' ? '🌙 다크 모드' : '☀️ 라이트 모드'}
+        {theme === 'light' ? `🌙 ${t('features.useContext.label.textDarkMode')}` : `☀️ ${t('features.useContext.label.textLightMode')}`}
       </button>
     </header>
   );
@@ -149,6 +151,7 @@ const Header: React.FC = () => {
  */
 const Content: React.FC = () => {
   const { theme } = useTheme();
+  const { t } = useTranslation();
   
   return (
     <main style={{
@@ -157,11 +160,11 @@ const Content: React.FC = () => {
       padding: '2rem',
       minHeight: '400px'
     }}>
-      <h3>메인 콘텐츠</h3>
-      <p>🧩 현재 테마: <strong>{theme === 'light' ? '라이트 모드' : '다크 모드'}</strong></p>
-      <p>
-        이 컴포넌트는 Header 컴포넌트와 직접적인 부모-자식 관계가 아니지만, 
-        Context를 통해 같은 테마 상태를 공유하고 있습니다.
+      <h3>{t('features.useContext.heading.titleMainCotent')}</h3>
+      <p>{`🧩 ${t('features.useContext.label.textCurrentTheme')}`} : <strong>{theme === 'light' ? `${t('features.useContext.label.textLightMode')}` : `${t('features.useContext.label.textDarkMode')}`
+      }</strong></p>
+      <p style={{ textAlign: 'left' }}>
+        {t('features.useContext.description.textMainContent')}
       </p>
       
       <div style={{
@@ -171,7 +174,7 @@ const Content: React.FC = () => {
         marginTop: '1rem',
         border: `1px solid ${theme === 'light' ? '#ddd' : '#666'}`
       }}>
-        <h3>중첩된 컴포넌트</h3>
+        <h3>{t('features.useContext.heading.titleNestedCotent')}</h3>
         <NestedComponent />
       </div>
     </main>
@@ -180,6 +183,7 @@ const Content: React.FC = () => {
 
 const NestedComponent: React.FC = () => {
   const { theme } = useTheme();
+  const { t } = useTranslation();
   
   return (
     <div style={{
@@ -188,8 +192,9 @@ const NestedComponent: React.FC = () => {
       borderRadius: '4px',
       marginTop: '0.5rem'
     }}>
-      <p>깊게 중첩된 컴포넌트에서도 Context에 접근할 수 있습니다!</p>
-      <p>🧩 현재 테마: <strong>{theme === 'light' ? '라이트 모드' : '다크 모드'}</strong></p>
+      <p style={{ textAlign: 'left' }}>{t('features.useContext.description.textNestedContent')}</p>
+      <p>{`🧩 ${t('features.useContext.label.textCurrentTheme')}`} : <strong>{theme === 'light' ? `${t('features.useContext.label.textLightMode')}` : `${t('features.useContext.label.textDarkMode')}`
+      }</strong></p>
     </div>
   );
 };
@@ -216,6 +221,8 @@ const NestedComponent: React.FC = () => {
  * - A structured layout with styling applied to emphasize the content and maintain readability.
  */
 const ContextExample: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
     <div>
       <div style={{
@@ -234,19 +241,19 @@ const ContextExample: React.FC = () => {
         marginTop: '2rem',
         borderRadius: '4px'
       }}>
-        <h4 style={{textAlign: 'left'}}>✅ Context의 장점</h4>
+        <h4 style={{textAlign: 'left'}}>{`✅ ${t('features.useContext.heading.titleAdvantage')}`} </h4>
         <ul>
-          <li style={{textAlign: 'left'}}>Prop drilling 방지</li>
-          <li style={{textAlign: 'left'}}>전역 상태 관리</li>
-          <li style={{textAlign: 'left'}}>컴포넌트 간 데이터 공유 간소화</li>
-          <li style={{textAlign: 'left'}}>코드 가독성 향상</li>
+          <li style={{textAlign: 'left'}}>{t('features.useContext.description.textAdvantage1')}</li>
+          <li style={{textAlign: 'left'}}>{t('features.useContext.description.textAdvantage2')}</li>
+          <li style={{textAlign: 'left'}}>{t('features.useContext.description.textAdvantage3')}</li>
+          <li style={{textAlign: 'left'}}>{t('features.useContext.description.textAdvantage4')}</li>
         </ul>
         
-        <h4 style={{textAlign: 'left'}}>⚠️ 주의사항</h4>
+        <h4 style={{textAlign: 'left'}}>{`⚠️ ${t('features.useContext.heading.titleCaution')}`}</h4>
         <ul>
-          <li style={{textAlign: 'left'}}>Context 값이 변경되면 모든 Consumer가 리렌더링됨</li>
-          <li style={{textAlign: 'left'}}>과도한 사용은 컴포넌트 재사용성을 떨어뜨릴 수 있음</li>
-          <li style={{textAlign: 'left'}}>복잡한 상태 관리에는 Redux나 Zustand 같은 라이브러리 고려</li>
+          <li style={{textAlign: 'left'}}>{t('features.useContext.description.textCaution1')}</li>
+          <li style={{textAlign: 'left'}}>{t('features.useContext.description.textCaution2')}</li>
+          <li style={{textAlign: 'left'}}>{t('features.useContext.description.textCaution3')}</li>
         </ul>
       </div>
     </div>

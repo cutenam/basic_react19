@@ -1,0 +1,357 @@
+{
+  "common": {
+    "welcome": "환영합니다",
+    "hello": "안녕하세요",
+    "goodbye": "안녕히 가세요",
+    "yes": "예",
+    "no": "아니오",
+    "save": "저장",
+    "cancel": "취소",
+    "delete": "삭제",
+    "edit": "수정",
+    "loading": "로딩 중...",
+    "error": "오류가 발생했습니다",
+    "login": "로그인",
+    "email": "이메일",
+    "password": "비밀번호",
+    "user": "사용자",
+    "admin": "관리자",
+    "profile": "사용자 프로필",
+    "name": "이름",
+    "logout": "로그아웃",
+    "role": "역할",
+    "appname": "React 19 학습 프로젝트",
+    "increase": "증가",
+    "decrease": "감소",
+    "reset": "초기화",
+    "count": "카운트",
+    "enterName": "이름을 입력하세요",
+    "enterMessage": "메시지를 입력하세요.",
+    "enterEmail": "이메일을 입력하세요",
+    "commentFile": "파일 설명을 입력하세요.",
+    "show": "보이기",
+    "hide": "숨기기",
+    "language": "언어",
+    "timer": "타이머",
+    "second": "초",
+    "uploading": "업로드 중...",
+    "upload": "파일 업로드",
+    "submitting": "제출 중...",
+    "temporary": "임시",
+    "send": "전송",
+    "retry": "다시 시도",
+    "delete": "삭제",
+    "title": "제목",
+    "content": "내용"
+  },
+  "appInfo": {
+    "description": "체계적으로 구성된 React 학습 예제들을 통해 단계별로 학습해보세요.",
+    "subtitle": "React 19 학습 예제",
+    "footerTitle": "React 19 + TypeScript + Vite로 구성된 학습용 프로젝트"
+  },
+  "error": {
+    "checkNameEmail": "이름과 이메일을 모두 입력해주세요.",
+    "checkEmail": "올바른 이메일 형식이 아닙니다.",
+    "selectFile": "파일을 선택하세요.",
+    "checkServer": "서버 오류가 발생했습니다. 다시 시도해주세요.",
+    "checkClient": "클라이언트 오류가 발생했습니다. 다시 시도해주세요.",
+    "httpError": "HTTP 오류가 발생했습니다.",
+    "httpResponse" : {
+      "400": "잘못된 요청입니다.(400 Bad Request)",
+      "401": "인증이 필요합니다.(401 Unauthorized)",
+      "403": "접근 권한이 없습니다.(403 Forbidden)",
+      "404": "요청한 리소스를 찾을 수 없습니다.(404 Not Found)",
+      "408": "요청 시간이 초과되었습니다.(408 Request Timeout)",
+      "429": "너무 많은 요청입니다. 잠시 후 다시 시도해주세요.(429 Too Many Requests)",
+      "500": "서버 내부 오류가 발생했습니다.(500 Internal Server Error)",
+      "502": "서버 게이트웨이 오류입니다.(502 Bad Gateway)",
+      "503": "서비스를 일시적으로 사용할 수 없습니다.(503 Service Unavailable)",
+      "504": "게이트웨이 시간 초과입니다.(504 Response Timeout)"
+    }
+  },
+  "features": {
+    "useState": {
+      "title": "useState 기본 예제",
+      "heading": {
+        "titleCounter": "카운터",
+        "titleTextInput": "input 텍스트 입력",
+        "titleToggleButton": "토글 버튼"
+      },
+      "label": {
+        "textToggle": "이 텍스트는 토글됩니다!"
+      }
+    },
+    "useEffect": {
+      "title": "useEffect 기본 예제",
+      "heading": {
+        "titleWindowTitle": "카운트 변화에 따라 브라우저 타이틀 변경",
+        "titleWindowSize": "윈도우 사이즈 변경 감지",
+        "titleTimer": "타이머 실행"
+      },
+      "label": {
+        "textAdjustWindowSize": "브라우저 창 크기를 조절해보세요!",
+        "textWindowSize": "윈도우 너비",
+        "second_zero": "{{count}} 초",
+        "second_one": "{{count}} 초",
+        "second_other": "{{count}} 초"
+      }
+    },
+    "useContext": {
+      "title": "Context 기본 예제",
+      "heading": {
+        "titleMainCotent": "메인 콘텐츠",
+        "titleNestedCotent": "중첩 콘텐츠",
+        "titleAdvantage": "Context의 장점",
+        "titleCaution": "Context의 주의사항"
+      },
+      "label": {
+        "textDarkMode": "다크 모드",
+        "textLightMode": "라이트 모드",
+        "textCurrentTheme": "현재 테마"
+      },
+      "description": {
+        "textMainContent": "이 컴포넌트는 Header 컴포넌트와 직접적인 부모-자식 관계가 아니지만, Context를 통해 같은 테마 상태를 공유하고 있습니다.",
+        "textNestedContent": "중첩된 컴포넌트에서도 Context에 접근할 수 있습니다!",
+        "textAdvantage1": "Prop drilling 방지",
+        "textAdvantage2": "전역 상태 관리",
+        "textAdvantage3": "컴포넌트 간 데이터 공유 간소화",
+        "textAdvantage4": "코드 가독성 향상",
+        "textCaution1": "Context 값이 변경되면 모든 Consumer가 리렌더링됨",
+        "textCaution2": "과도한 사용은 컴포넌트 재사용성을 떨어뜨릴 수 있음",
+        "textCaution3": "복잡한 상태 관리에는 Redux나 Zustand 같은 라이브러리 고려"
+      }
+    },
+    "authUseContext": {
+      "title": "인증 Context 예제",
+      "heading": {
+        "protectedContent": "보호된 콘텐츠",
+        "adminPrivileges": "관리자 권한",
+        "titleFeaturesAuthContext": "인증 Context의 특징"
+      },
+      "label": {
+        "submitting": "로그인 중...",
+        "testAccount": "테스트 계정"
+      },
+      "message": {
+        "protectedContent": "안녕하세요, {{name}}님! 인증된 사용자만 볼 수 있는 콘텐츠입니다.",
+        "adminPrivileges": "관리자만 볼 수 있는 콘텐츠입니다.",
+        "loginFailed": "로그인에 실패했습니다. 이메일과 비밀번호를 확인해주세요.",
+        "loginRequired": "이 콘텐츠를 보려면 로그인해주세요."
+      },
+      "description": {
+        "textFeaturesAuthContext1": "전역 인증 상태 관리",
+        "textFeaturesAuthContext2": "로그인/로그아웃 기능",
+        "textFeaturesAuthContext3": "역할 기반 접근 제어",
+        "textFeaturesAuthContext4": "로컬 스토리지 연동",
+        "textFeaturesAuthContext5": "로딩 상태 관리",
+        "textFeaturesAuthContext6": "보호된 라우트/컴포넌트 구현"
+      }
+    },
+    "actions": {
+      "title": "React 19 Actions 예제",
+      "heading": {
+        "titleFeaturesAuthActions": "인증 Actions의 특징"
+      },
+      "label": {
+        "submitting": "제출 중...",
+        "submit": "제출하기"
+      },
+      "response": {
+        "submitSuccess": "{{name}}님, 성공적으로 제출되었습니다!"
+      }
+    },
+    "useFormStatus": {
+      "title": "useFormStatus 예제",
+      "label": {
+        "inputFile": "파일 선택",
+        "commentFile": "파일 설명",
+        "formStatus": "폼 상태",
+        "httpMethod": "HTTP 메서드",
+        "submitting": "제출 중",
+        "waiting": "대기 중",
+        "submitData": "제출된 데이터",
+        "notExist": "없음"
+      },
+      "description": {
+        "textUseFormStatus": "폼 내부 컴포넌트에서 제출 상태를 추적하는 예제입니다.",
+        "uploadingFile": "파일을 업로드하고 있습니다..."
+      },
+      "response": {
+        "submitSuccess": "파일 {{name}} ({{size}}KB)이 성공적으로 업로드되었습니다!"
+      }
+    },
+    "optimistic": {
+      "title": "Optimistic Updates 예제",
+      "label": {
+        "enterMessage": "안녕하세요! 메시지를 입력해보세요.",
+        "saveServer": "서버 반영"
+      },
+      "description": {
+        "textOptimistic": "입력한 데이터를 서버(비동기)에 반영하기 전에 먼저 UI에 반영하는 예제입니다"
+      }
+    },
+    "useHook": {
+      "title": "use 훅 예제",
+      "heading": {
+        "titleFeaturesUseHook": "use 훅의 주요 특징"
+      },
+      "label": {
+        "textDarkMode": "다크 모드",
+        "textLightMode": "라이트 모드",
+        "textCurrentTheme": "현재 테마",
+        "changeTheme": "테마 변경",
+        "selectUser": "사용자 선택",
+        "loadingUserData": "사용자 정보를 불러오는 중...",
+        "loadingPostData": "게시물 정보를 불러오는 중...",
+        "textFeaturesUseHook1": "Promise 처리",
+        "textFeaturesUseHook2": "Context 사용",
+        "textFeaturesUseHook3": "Suspense 통합",
+        "textFeaturesUseHook4": "조건부 사용",
+        "textFeaturesUseHook5": "에러 처리"
+      },
+      "description": {
+        "textExplainExample": "use 훅을 사용하여 Promise와 Context를 처리하는 예제입니다.",
+        "textChangeThemeUsingHook": "use 훅으로 Context를 사용하고 있습니다.",
+        "textFeaturesUseHook1": "async/await 없이 Promise를 직접 사용",
+        "textFeaturesUseHook2": "useContext 대신 use 훅으로 Context 접근",
+        "textFeaturesUseHook3": "Promise가 해결될 때까지 자동으로 Suspense 트리거",
+        "textFeaturesUseHook4": "조건문 내에서도 사용 가능 (기존 훅 규칙과 다름)",
+        "textFeaturesUseHook5": "Promise reject 시 가장 가까운 Error Boundary로 전파"
+      },
+      "response": {
+        "failedGetUserData": "사용자 데이터를 불러오는데 실패했습니다.",
+        "failedGetPostData": "게시물 데이터를 불러오는데 실패했습니다."
+      },
+      "data": {
+        "postTitle": "게시물 {{postId}} - 사용자 {{userId}}",
+        "postContent": "이것은 사용자 {{userId}}의 {{postId}}번째 게시물입니다. React 19의 use 훅을 사용하여 데이터를 불러왔습니다."
+      }
+    },
+    "customHook": {
+      "title": "커스텀 훅 예제",
+      "heading": {
+        "titleUseCounter": "useCounter 훅",
+        "titleUseLocalStorage": "useLocalStorage 훅",
+        "titleUseFetch": "useFetch 훅"
+      },
+      "label": {
+        "inputNumber": "숫자입력",
+        "savedName": "저장된 이름",
+        "nothing": "없음",
+        "enterName": "이름을 입력하세요 (자동 저장됨)",
+        "error": "에러"
+      }
+    },
+    "reactCompiler": {
+      "title": "React Compiler (자동 최적화) 예제",
+      "heading": {
+        "titleCoreConcept": "핵심 개념",
+        "titleManualOptimize": "기존 방식 (수동 최적화)",
+        "titleAutoOptimize": "React Compiler (자동 최적화)",
+        "titleGuidelineReactComplier": "React Compiler 설정 방법",
+        "titleAdvantage": "주요 이점",
+        "titleCautions": "주의사항",
+        "titleAdvantageCautions": "이점 & 주의사항",
+        "titleHowItWorks": "동작 원리",
+        "titleGuidelineTest": "실습 가이드"
+      },
+      "label": {
+        "resultHeavyComputation": "무거운 계산 결과",
+        "childCounter": "자식 카운터",
+        "parentCounter": "부모 카운터",
+        "textManualOptimize": "React.memo, useCallback 이용",
+        "textAutoOptimize": "컴파일러가 자동으로 메모이제이션 적용",
+        "guidelineReactComplier1": "1. 패키지 설치",
+        "guidelineReactComplier2": "2. Babel 설정 (babel.config.js)",
+        "guidelineReactComplier3": "3. Vite 설정 (vite.config.ts)",
+        "guidelineReactComplier4": "4. Next.js 설정 (next.config.js)",
+        "advantage1": "자동 최적화",
+        "advantage2": "의존성 관리",
+        "advantage3": "성능 향상",
+        "advantage4": "코드 간소화",
+        "advantage5": "실수 방지",
+        "caution1": "실험적 기능",
+        "caution2": "빌드 시간",
+        "caution3": "디버깅",
+        "caution4": "호환성",
+        "caution5": "학습 곡선",
+        "howItWorks1": "코드 분석",
+        "howItWorks2": "의존성 추적",
+        "howItWorks3": "메모이제이션 삽입",
+        "howItWorks4": "최적화 적용"
+      },
+      "description": {
+        "textExplainSample": "React 19의 React Compiler는 빌드 타임에 코드를 분석하여 자동으로 최적화를 적용합니다.",
+        "textCoreConcept1": "React Compiler는 JavaScript 코드를 분석하여 자동으로 메모이제이션을 적용하는 빌드 타임 최적화 도구입니다.",
+        "textCoreConcept2": "개발자가 수동으로 useMemo, useCallback, React.memo를 추가",
+        "textCoreConcept3": "컴파일러가 자동으로 최적화 지점을 찾아 적용",
+        "textHeavyComputation1": "카운터를 증가시켜도 자식 컴포넌트는 React.memo, useCallback 적용으로 리렌더링되지 않습니다.",
+        "textHeavyComputation2": "카운터를 증가시켜도 자식 컴포넌트는 React Compiler 적용으로 리렌더링되지 않습니다.",
+        "textAdvantage1": "useMemo/useCallback 불필요",
+        "textAdvantage2": "의존성 배열 자동 관리",
+        "textAdvantage3": "불필요한 리렌더링 자동 방지",
+        "textAdvantage4": "보일러플레이트 코드 감소",
+        "textAdvantage5": "잘못된 최적화 패턴 방지",
+        "textCaution1": "아직 안정화 단계",
+        "textCaution2": "컴파일 시간 증가 가능",
+        "textCaution3": "컴파일된 코드 디버깅 어려움",
+        "textCaution4": "일부 라이브러리와 충돌 가능",
+        "textCaution5": "내부 동작 이해 필요",
+        "textHowItWorks1": "Babel 플러그인이 컴포넌트 코드를 분석",
+        "textHowItWorks2": "변수와 함수의 의존성 자동 추적",
+        "textHowItWorks3": "필요한 위치에 자동으로 메모이제이션 코드 삽입",
+        "textHowItWorks4": "불필요한 리렌더링을 방지하는 코드 생성",
+        "textGuidelineTest1": "각 탭을 클릭하여 기존 방식과 Compiler 방식을 비교해보세요.",
+        "textGuidelineTest2": "\"카운터\" 버튼을 클릭하고 콘솔을 확인하세요.",
+        "textGuidelineTest3": "자식 컴포넌트가 리렌더링되는지 관찰하세요.",
+        "textGuidelineTest4": "설정 방법 탭에서 프로젝트에 적용하는 방법을 확인하세요.",
+        "textGuidelineTest5": "이점과 주의사항을 검토하여 실제 프로젝트 적용을 고려하세요."
+      }
+    }
+  },
+  "i18next": {
+    "title": "react-i18next를 활용한 다중언어 지원",
+    "currentLanguage": "현재 언어",
+    "selectLanguage": "언어 선택",
+    "korean": "한국어",
+    "english": "영어",
+    "japanese": "일본어",
+    "description": "react-i18next는 React 애플리케이션에서 가장 널리 사용되는 국제화 라이브러리입니다.",
+    "features": {
+      "title": "주요 기능",
+      "feature1": "네임스페이스를 통한 번역 파일 분리",
+      "feature2": "지연 로딩 및 코드 스플리팅 지원",
+      "feature3": "복수형, 날짜, 숫자 포맷팅",
+      "feature4": "중첩된 번역과 보간(interpolation)",
+      "feature5": "TypeScript 완벽 지원",
+      "feature6": "SSR(서버 사이드 렌더링) 지원"
+    },
+    "interpolation": {
+      "title": "보간 처리 (Interpolation)",
+      "greeting": "안녕하세요, {{name}}님!",
+      "welcome": "{{appName}}에 오신 것을 환영합니다",
+      "userInfo": "현재 {{count}}개의 메시지가 있습니다",
+      "enterName": "이름을 입력하세요"
+    },
+    "pluralization": {
+      "title": "복수형 처리 (Pluralization)",
+      "labelMessage": "메시지 (i18next.pluralization.message_*)",
+      "message_zero": "메시지가 없습니다",
+      "message_one": "{{count}}개의 새 메시지",
+      "message_other": "{{count}}개의 새 메시지들"
+    },
+    "nested": {
+      "title": "중첩 객체 참조 (Nesting)",
+      "user": {
+        "profile": "사용자 프로필",
+        "settings": "설정",
+        "logout": "로그아웃"
+      },
+      "admin": {
+        "dashboard": "관리자 대시보드",
+        "users": "사용자 관리",
+        "settings": "시스템 설정"
+      }
+    }
+  }
+}

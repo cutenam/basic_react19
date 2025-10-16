@@ -23,6 +23,8 @@ export type ExampleType =
   | 'effect' 
   | 'context'
   | 'auth-context'
+  | 'i18n'
+  | 'i18next'
   | 'actions' 
   | 'optimistic' 
   | 'form-status'

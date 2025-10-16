@@ -1,5 +1,6 @@
 import { useActionState } from 'react';
 import Button from "../../components/common/Button";
+import { useTranslation} from "react-i18next";
 
 interface FormState {
   success?: string;
@@ -12,11 +13,16 @@ interface FormState {
 
 /**
  * formAction 함수가 호출하는 원본 액션 함수, useActionState 에 전달됨, form action 속성에 정의
+ * - useTranslation 훅은 여기 비동기 함수에서는 호출불가, 컴포넌트 또는 커스텀 훅 내부에서만 호출 가능, 매개변수로 전달받음
  *
  * Processes the submission of a form and validates provided data.
  * Simulates a network delay before performing the validation.
  */
-async function submitForm(_prevState: FormState | null, formData: FormData): Promise<FormState> {
+async function submitForm(
+  _prevState: FormState | null, 
+  formData: FormData,
+  t: (key: string, options?: Record<string, unknown>) => string     // i18next t 함수
+): Promise<FormState> {
   // 제출된 폼 데이터
   const name = formData.get('name') as string;
   const email = formData.get('email') as string;
@@ -26,14 +32,14 @@ async function submitForm(_prevState: FormState | null, formData: FormData): Pro
 
   // 제출된 폼데이터 체크(Validation)
   if (!name || !email) {
-    return { error: '이름과 이메일을 모두 입력해주세요.' };
+    return { error: t('error.checkNameEmail') };
   }
   
   if (!email.includes('@')) {
-    return { error: '올바른 이메일 형식이 아닙니다.' };
+    return { error: t('error.checkEmail') };
   }
   
-  return { success: `${name}님, 성공적으로 제출되었습니다!` };
+  return { success: t('features.actions.response.submitSuccess', {name}) };
 }
 
 /**
@@ -48,24 +54,30 @@ export default function ActionsExample() {
   /**
    * useActionState : 폼제출 관련 비동기 액션을 쉽게 관리해주는 hook
    *  - state : formAction 리턴값
-   *  - formAction : form action 함수, 여기에서는 submitForm
+   *  - formAction : form action 함수, 여기에서는 submitForm, 필요한경우 추가 매개변수를 전달할 수 있음
    *  - isPending : formAction 실행중 여부, true/false
    */
-  const [state, formAction, isPending] = useActionState(submitForm, null);
+
+  const { t } = useTranslation();
+  // const [state, formAction, isPending] = useActionState(submitForm, null);
+  const [state, formAction, isPending] = useActionState<FormState | null, FormData>(
+    (prevState, formData) => submitForm(prevState, formData, t),
+    null
+  );
   
   return (
     <div style={{ display: 'flex', padding: '20px', border: '1px solid #ccc', margin: '10px', flexDirection: 'column', alignItems: 'center' }}>
-      <h2>React 19 Actions 예제</h2>
+      <h2>{t('features.actions.title')}</h2>
       <form action={formAction} style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: '300px'}}>
         <input
           name="name" 
-          placeholder="이름을 입력하세요"
+          placeholder={t('common.enterName')}
           style={{ padding: '8px', border: '1px solid #ccc', borderRadius: '4px' }}
         />
         <input 
           name="email" 
           type="email" 
-          placeholder="이메일을 입력하세요"
+          placeholder={t('common.enterEmail')}
           style={{ padding: '8px', border: '1px solid #ccc', borderRadius: '4px' }}
         />
         <Button
@@ -79,7 +91,7 @@ export default function ActionsExample() {
             cursor: isPending ? 'not-allowed' : 'pointer'
           }}
         >
-          {isPending ? '제출 중...' : '제출하기'}
+          {isPending ? t('features.actions.label.submitting') : t('features.actions.label.submit')}
         </Button>
       </form>
       {state?.error && (

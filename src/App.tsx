@@ -2,25 +2,30 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { useTranslation } from 'react-i18next';
 
 // 새로운 구조의 컴포넌트들 import
 import Navigation from './components/layout/Navigation'
+import LanguageSwitcher from './components/common/LanguageSwitcher'
 import StateExample from './examples/basics/StateExample'
 import EffectExample from './examples/basics/EffectExample'
 import ContextExample from './examples/basics/ContextExample'
 import AuthContextExample from './examples/basics/AuthContextExample'
+import I18nExample from './examples/advanced/i18n/I18nExample.tsx'
+import I18nextExample from './examples/advanced/i18n/I18nextExample.tsx'
 import ActionsExample from './examples/react19/ActionsExample'
 import OptimisticExample from './examples/react19/OptimisticExample'
 import FormStatusExample from './examples/react19/FormStatusExample'
 import CustomHookExample from './examples/hooks/CustomHookExample'
 import UseHookExample from './examples/react19/UseHookExample'
 import ReactCompilerExample from './examples/react19/ReactCompilerExample'
-
+import { LanguageProvider } from './examples/advanced/i18n/LanguageContext.tsx'
 
 import type { ExampleType } from './types'
 
 function App() {
   const [currentExample, setCurrentExample] = useState<ExampleType>('state')
+  const { t } = useTranslation();
 
   const renderExample = () => {
     switch (currentExample) {
@@ -32,6 +37,10 @@ function App() {
         return <ContextExample />
       case 'auth-context':
         return <AuthContextExample />
+      case 'i18n':
+        return <I18nExample />
+      case 'i18next':
+        return <I18nextExample />
       case 'actions':
         return <ActionsExample />
       case 'optimistic':
@@ -50,6 +59,7 @@ function App() {
   }
 
   return (
+    <LanguageProvider>
     <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '20px' }}>
       <header style={{ textAlign: 'center', marginBottom: '30px' }}>
         <div style={{ marginBottom: '20px' }}>
@@ -60,10 +70,13 @@ function App() {
             <img src={reactLogo} className="logo react" alt="React logo" />
           </a>
         </div>
-        <h1 style={{ color: '#333', marginBottom: '10px' }}>React 19 학습 프로젝트</h1>
+        <h1 style={{ color: '#333', marginBottom: '10px' }}>{t('common.appname')}</h1>
         <p style={{ color: '#666', fontSize: '16px' }}>
-          체계적으로 구성된 React 학습 예제들을 통해 단계별로 학습해보세요
+          {t('appInfo.description')}
         </p>
+        
+        {/* 전역 언어 선택기 */}
+        <LanguageSwitcher />
       </header>
 
       <Navigation 
@@ -82,9 +95,10 @@ function App() {
         borderTop: '1px solid #eee',
         color: '#666'
       }}>
-        <p>React 19 + TypeScript + Vite로 구성된 학습용 프로젝트</p>
+        <p>{t('appInfo.footerTitle')}</p>
       </footer>
     </div>
+    </LanguageProvider>
   )
 }
 

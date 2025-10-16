@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';
 
 // 사용자 정보 타입 정의
 interface User {
@@ -66,7 +67,7 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   // 로그인 함수
   const login = async (email: string, password: string): Promise<boolean> => {
-    // API 호출시뮬레이션
+    // API 호출 시뮬레이션
     await new Promise(resolve => setTimeout(resolve, 1000));
     
     // 로그인 시뮬레이션을 위한 더미 로직
@@ -166,6 +167,7 @@ const useAuth = () => {
  */
 const LoginForm: React.FC = () => {
   const { login } = useAuth();
+  const { t } = useTranslation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -181,7 +183,7 @@ const LoginForm: React.FC = () => {
       const success = await login(email, password);
       console.log('로그인 결과:', success);
       if (!success) {
-        setError('로그인에 실패했습니다. 이메일과 비밀번호를 확인해주세요.');
+        setError(t('features.authUseContext.message.loginFailed'));
       }
     } finally {
       setSubmitting(false);
@@ -197,11 +199,11 @@ const LoginForm: React.FC = () => {
       borderRadius: '8px',
       backgroundColor: '#f9f9f9'
     }}>
-      <h3>로그인</h3>
+      <h3>{t('common.login')}</h3>
       <form onSubmit={handleSubmit}>
         <div style={{ marginBottom: '1rem' }}>
           <label style={{ display: 'block', marginLeft: '0.5rem', marginBottom: '0.5rem', fontWeight: 'bold', textAlign: 'left' }}>
-            이메일
+            {t('common.email')}
           </label>
           <input
             type="email"
@@ -216,10 +218,10 @@ const LoginForm: React.FC = () => {
             required
           />
         </div>
-        
+
         <div style={{ marginBottom: '1rem' }}>
           <label style={{ display: 'block', marginLeft: '0.5rem', marginBottom: '0.5rem', fontWeight: 'bold',  textAlign: 'left' }}>
-            비밀번호
+            {t('common.password')}
           </label>
           <input
             type="password"
@@ -236,8 +238,8 @@ const LoginForm: React.FC = () => {
         </div>
         {/* 에러 발생시 */}
         {error && (
-          <div style={{ 
-            color: 'red', 
+          <div style={{
+            color: 'red',
             marginBottom: '1rem',
             padding: '0.5rem',
             backgroundColor: '#ffe6e6',
@@ -246,7 +248,7 @@ const LoginForm: React.FC = () => {
             {error}
           </div>
         )}
-        
+
         <button
           type="submit"
           disabled={submitting}
@@ -260,15 +262,15 @@ const LoginForm: React.FC = () => {
             cursor: submitting ? 'not-allowed' : 'pointer'
           }}
         >
-          {submitting ? '로그인 중...' : '로그인'}
+          {submitting ? t('features.authUseContext.label.submitting') : t('common.login')}
         </button>
       </form>
-      
+
       <div style={{ marginTop: '2rem', fontSize: '0.8rem', color: '#666' }}>
-        <p style={{ marginLeft: '20px', textAlign: 'left' }}><strong>💡 테스트 계정</strong></p>
+        <p style={{ marginLeft: '20px', textAlign: 'left' }}><strong>💡 {t('features.authUseContext.label.testAccount')}</strong></p>
         <ul>
-          <li style={{ textAlign: 'left' }}>관리자: admin@example.com / admin</li>
-          <li style={{ textAlign: 'left' }}>일반 사용자: user@example.com / user</li>
+          <li style={{ textAlign: 'left' }}>{t('common.admin')} : admin@example.com / admin</li>
+          <li style={{ textAlign: 'left' }}>{t('common.user')}: user@example.com / user</li>
         </ul>
       </div>
     </div>
@@ -296,6 +298,7 @@ const LoginForm: React.FC = () => {
  */
 const UserProfile: React.FC = () => {
   const { user, logout, hasRole } = useAuth();
+  const { t } = useTranslation();
 
   if (!user) return null;
 
@@ -308,11 +311,11 @@ const UserProfile: React.FC = () => {
       borderRadius: '4px',
       backgroundColor: '#f0f8ff'
     }}>
-      <h2>사용자 프로필</h2>
+      <h2>{t('common.profile')}</h2>
       <ul style={{ marginBottom: '1rem' }}>
-        <li style={{ textAlign: 'left' }}><strong>이름 : </strong> {user.name}</li>
-        <li style={{ textAlign: 'left' }}><strong>이메일 : </strong> {user.email}</li>
-        <li style={{ textAlign: 'left' }}><strong>역할 : </strong>
+        <li style={{ textAlign: 'left' }}><strong>{t('common.name')} : </strong> {user.name}</li>
+        <li style={{ textAlign: 'left' }}><strong>{t('common.email')} : </strong> {user.email}</li>
+        <li style={{ textAlign: 'left' }}><strong>{t('common.role')} : </strong>
           <span style={{
             padding: '0.25rem 0.5rem',
             backgroundColor: hasRole('admin') ? '#58b06d' : '#ef6c27',
@@ -320,7 +323,7 @@ const UserProfile: React.FC = () => {
             borderRadius: '4px',
             marginLeft: '0.5rem'
           }}>
-            {user.role === 'admin' ? '관리자' : '일반 사용자'}
+            {user.role === 'admin' ? t('common.admin') : t('common.user')}
           </span>
         </li>
       </ul>
@@ -333,8 +336,8 @@ const UserProfile: React.FC = () => {
           borderRadius: '4px',
           marginBottom: '1rem'
         }}>
-          <h4>🔑 관리자 권한</h4>
-          <p>관리자만 볼 수 있는 콘텐츠입니다.</p>
+          <h4>🔑 {t('features.authUseContext.heading.adminPrivileges')}</h4>
+          <p>{t('features.authUseContext.message.adminPrivileges')}</p>
         </div>
       )}
       
@@ -349,7 +352,7 @@ const UserProfile: React.FC = () => {
           cursor: 'pointer'
         }}
       >
-        로그아웃
+        {t('common.logout')}
       </button>
     </div>
   );
@@ -374,6 +377,7 @@ const UserProfile: React.FC = () => {
 const ProtectedContent: React.FC = () => {
   // 컨텍스트 값 참조
   const { isAuthenticated, user } = useAuth();
+  const { t } = useTranslation();
 
   if (!isAuthenticated) {
     return (
@@ -385,8 +389,7 @@ const ProtectedContent: React.FC = () => {
         border: '1px solid #BDD3FF',
         borderRadius: '4px',
       }}>
-        <h3>🔒 로그인이 필요합니다</h3>
-        <p>이 콘텐츠를 보려면 먼저 로그인해주세요.</p>
+        <p>🔒 {t('features.authUseContext.message.loginRequired')}</p>
       </div>
     );
   }
@@ -400,9 +403,8 @@ const ProtectedContent: React.FC = () => {
       borderRadius: '4px',
       backgroundColor: '#d4edda'
     }}>
-      <h3>🎉 보호된 콘텐츠</h3>
-      <p>안녕하세요, {user?.name}님! 인증된 사용자만 볼 수 있는 콘텐츠입니다.</p>
-      <p>Context를 통해 전역적으로 인증 상태를 관리하고 있습니다.</p>
+      <h3>🎉 {t('features.authUseContext.heading.protectedContent')}</h3>
+      <p>{t('features.authUseContext.message.protectedContent', { name: user?.name })}</p>
     </div>
   );
 };
@@ -434,11 +436,14 @@ const ProtectedContent: React.FC = () => {
 const AuthContextExample: React.FC = () => {
   const { isAuthenticated, isInitializing } = useAuth();
 
+  const { t, i18n } = useTranslation();
+  console.log('i18n : ', i18n.language);
+
   // isInitializing : AuthProvider 컴포넌트에서 값 세팅
   if (isInitializing) {
     return (
       <div style={{ textAlign: 'center', padding: '2rem' }}>
-        <h2>로딩 중...</h2>
+        <h2>{t('common.loading')}</h2>
       </div>
     );
   }
@@ -447,7 +452,7 @@ const AuthContextExample: React.FC = () => {
     <div>
       <div style={{ border : '1px solid #ccc' }}>
         <h2 style={{ textAlign: 'center', marginBottom: '2rem' }}>
-          인증 Context 예제
+          {t('features.authUseContext.title')}
         </h2>
         {/* isAuthenticated : AuthProvider 컴포넌트에서 값 세팅*/}
         {!isAuthenticated ? <LoginForm /> : <UserProfile />}
@@ -461,14 +466,14 @@ const AuthContextExample: React.FC = () => {
         backgroundColor: '#f8f9fa', 
         borderRadius: '4px'
       }}>
-        <h4 style={{ textAlign: 'left', marginLeft: '1rem' }}>✅ 인증 Context의 특징</h4>
+        <h4 style={{ textAlign: 'left', marginLeft: '1rem' }}>{`✅ ${t('features.authUseContext.heading.titleFeaturesAuthContext')}`}</h4>
         <ul>
-          <li style={{ textAlign: 'left'}}>전역 인증 상태 관리</li>
-          <li style={{ textAlign: 'left'}}>로그인/로그아웃 기능</li>
-          <li style={{ textAlign: 'left'}}>역할 기반 접근 제어</li>
-          <li style={{ textAlign: 'left'}}>로컬 스토리지 연동</li>
-          <li style={{ textAlign: 'left'}}>로딩 상태 관리</li>
-          <li style={{ textAlign: 'left'}}>보호된 라우트/컴포넌트 구현</li>
+          <li style={{ textAlign: 'left'}}>{t('features.authUseContext.description.textFeaturesAuthContext1')}</li>
+          <li style={{ textAlign: 'left'}}>{t('features.authUseContext.description.textFeaturesAuthContext2')}</li>
+          <li style={{ textAlign: 'left'}}>{t('features.authUseContext.description.textFeaturesAuthContext3')}</li>
+          <li style={{ textAlign: 'left'}}>{t('features.authUseContext.description.textFeaturesAuthContext4')}</li>
+          <li style={{ textAlign: 'left'}}>{t('features.authUseContext.description.textFeaturesAuthContext5')}</li>
+          <li style={{ textAlign: 'left'}}>{t('features.authUseContext.description.textFeaturesAuthContext5')}</li>
         </ul>
       </div>
     </div>

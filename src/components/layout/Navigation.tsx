@@ -1,4 +1,5 @@
 import Button from '../common/Button';
+import { useTranslation } from 'react-i18next';
 
 /**
  * Navigation 컴포넌트의 props 타입 정의
@@ -21,27 +22,29 @@ interface NavItem {
  * item 데이터 정의
  */
 const navigationItems: NavItem[] = [
-  { id: 'state', label: 'useState 기본', category: 'basics' },
-  { id: 'effect', label: 'useEffect 기본', category: 'basics' },
-  { id: 'context', label: 'Context 기본', category: 'basics' },
-  { id: 'auth-context', label: '인증 Context', category: 'basics' },
-  { id: 'actions', label: 'Actions (React 19)', category: 'react19' },
+  { id: 'state', label: 'useState', category: 'basics' },
+  { id: 'effect', label: 'useEffect', category: 'basics' },
+  { id: 'context', label: 'Context', category: 'basics' },
+  { id: 'auth-context', label: 'Auth Context', category: 'basics' },
+  { id: 'i18n', label: 'Multi-language (Context)', category: 'advanced' },
+  { id: 'i18next', label: 'Multi-language (i18next)', category: 'advanced' },
+  { id: 'actions', label: 'Actions', category: 'react19' },
   { id: 'optimistic', label: 'Optimistic Updates', category: 'react19' },
   { id: 'form-status', label: 'useFormStatus', category: 'react19' },
-  { id: 'use-hook', label: 'use 훅', category: 'react19' },
+  { id: 'use-hook', label: 'use Hook', category: 'react19' },
   { id: 'react-compiler', label: 'React Compiler', category: 'react19' },
-  { id: 'custom-hooks', label: '커스텀 훅', category: 'hooks' },
+  { id: 'custom-hooks', label: 'Custom Hook', category: 'hooks' },
 ];
 
 /**
  * 카테고리 키에 대한 문자열 라벨 정의
  */
 const categoryLabels: Record<string, string> = {
-  basics: '기본 개념',
-  react19: 'React 19 새 기능',
-  hooks: '커스텀 훅',
+  basics: 'Basic',
+  react19: 'React 19 New Features',
+  hooks: 'Custom Hooks',
   patterns: '리액트 패턴',
-  advanced: '고급 개념'
+  advanced: 'Advanced'
 };
 
 /**
@@ -60,6 +63,7 @@ const categoryLabels: Record<string, string> = {
 export default function Navigation({ currentExample, onExampleChange }: NavigationProps) {
   // navigationItems 의 category를 추출하여 중복을 제거한 후 categories 배열 생성
   const categories = Array.from(new Set(navigationItems.map(item => item.category)));
+  const { t } = useTranslation();
 
   return (
     <nav style={{ 
@@ -69,7 +73,7 @@ export default function Navigation({ currentExample, onExampleChange }: Navigati
       marginBottom: '20px' 
     }}>
       <h2 style={{ marginTop: 0, marginBottom: '20px', color: '#333' }}>
-        React 19 학습 예제
+        {t('appInfo.subtitle')}
       </h2>
       
       {categories.map(category => (

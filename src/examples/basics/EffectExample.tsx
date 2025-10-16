@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Button from "../../components/common/Button.tsx";
+import { useTranslation } from 'react-i18next';
 
 /**
  * useEffect 기본 사용법 예제
@@ -14,6 +15,7 @@ export default function EffectExample() {
   const [count, setCount] = useState(0);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [timer, setTimer] = useState(0);
+  const { t } = useTranslation();
 
   // 1. 컴포넌트 마운트/언마운트 시 실행
   useEffect(() => {
@@ -26,7 +28,7 @@ export default function EffectExample() {
 
   // 2. count가 변경될 때마다 실행
   useEffect(() => {
-    document.title = `카운트: ${count}`;
+    document.title = `${t('common.count')}: ${count}`;
   }, [count]); // count 의존성
 
   // 3. 윈도우 리사이즈 이벤트 리스너
@@ -54,26 +56,27 @@ export default function EffectExample() {
 
   return (
     <div style={{ padding: '20px', border: '1px solid #ccc', margin: '10px' }}>
-      <h2>useEffect 기본 예제</h2>
+      <h2>{t('features.useEffect.title')}</h2>
 
-      <h3>1. 카운트 변화에 따라 브라우저 타이틀 변경</h3>
+      <h3>{`1. ${t('features.useEffect.heading.titleWindowTitle')}`}</h3>
       <div style={{ marginBottom: '15px' }}>
-        <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>카운트: {count}
-          <Button variant='function' size='medium' style={{ marginLeft: '10px', border: '1px solid #dee2e6' }} onClick={() => setCount(count + 1)}>증가</Button>
+        <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>{t('common.count')}: {count}
+          <Button variant='function' size='medium' style={{ marginLeft: '10px', border: '1px solid #dee2e6' }} onClick={() => setCount(count + 1)}>{t('common.increase')}</Button>
         </p>
       </div>
 
-      <h3>2. 윈도우 사이즈 변경 감지</h3>
+      <h3>{`2. ${t('features.useEffect.heading.titleWindowSize')}`}</h3>
       <div style={{ marginBottom: '15px' }}>
-        <small>(브라우저 창 크기를 조절해보세요!)</small>
-        <p>윈도우 너비: {windowWidth}px</p>
+        <small>({t('features.useEffect.label.textAdjustWindowSize')}
+          )</small>
+        <p>{t('features.useEffect.label.textWindowSize')}: {windowWidth}px</p>
       </div>
 
-      <h3>3. 타이머 실행</h3>
+      <h3>{`3. ${t('features.useEffect.heading.titleTimer')}`}</h3>
       <div>
         <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          타이머: {timer}초
-          <Button variant='function' size='medium' style={{ marginLeft: '10px', border: '1px solid #dee2e6' }} onClick={() => setTimer(0)}>리셋</Button>
+          {t('common.timer')}: {t('features.useEffect.label.second', {count: timer})}
+          <Button variant='function' size='medium' style={{ marginLeft: '10px', border: '1px solid #dee2e6' }} onClick={() => setTimer(0)}>{t('common.reset')}</Button>
         </p>
       </div>
     </div>

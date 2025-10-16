@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface FetchState<T> {
   data: T | null;
@@ -13,6 +14,7 @@ export function useFetch<T = unknown>(url: string): FetchState<T> {
   const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     // URL이 유효하지 않으면 요청하지 않음
@@ -41,42 +43,42 @@ export function useFetch<T = unknown>(url: string): FetchState<T> {
           
           switch (response.status) {
             case 400:
-              errorMessage = '잘못된 요청입니다. (400 Bad Request)';
+              errorMessage = t('error.httpResponse.400');
               break;
             case 401:
-              errorMessage = '인증이 필요합니다. (401 Unauthorized)';
+              errorMessage = t('error.httpResponse.401');
               break;
             case 403:
-              errorMessage = '접근 권한이 없습니다. (403 Forbidden)';
+              errorMessage = t('error.httpResponse.403');
               break;
             case 404:
-              errorMessage = '요청한 리소스를 찾을 수 없습니다. (404 Not Found)';
+              errorMessage = t('error.httpResponse.404');
               break;
             case 408:
-              errorMessage = '요청 시간이 초과되었습니다. (408 Request Timeout)';
+              errorMessage = t('error.httpResponse.408');
               break;
             case 429:
-              errorMessage = '너무 많은 요청입니다. 잠시 후 다시 시도해주세요. (429 Too Many Requests)';
+              errorMessage = t('error.httpResponse.429');
               break;
             case 500:
-              errorMessage = '서버 내부 오류가 발생했습니다. (500 Internal Server Error)';
+              errorMessage = t('error.httpResponse.500');
               break;
             case 502:
-              errorMessage = '서버 게이트웨이 오류입니다. (502 Bad Gateway)';
+              errorMessage = t('error.httpResponse.502');
               break;
             case 503:
-              errorMessage = '서비스를 일시적으로 사용할 수 없습니다. (503 Service Unavailable)';
+              errorMessage = t('error.httpResponse.503');
               break;
             case 504:
-              errorMessage = '게이트웨이 시간 초과입니다. (504 Gateway Timeout)';
+              errorMessage = t('error.httpResponse.504');
               break;
             default:
               if (response.status >= 400 && response.status < 500) {
-                errorMessage = `클라이언트 오류가 발생했습니다. (${response.status})`;
+                errorMessage = `${t('error.checkClient')}(${response.status})`;
               } else if (response.status >= 500) {
-                errorMessage = `서버 오류가 발생했습니다. (${response.status})`;
+                errorMessage = `${t('error.checkServer')}(${response.status})`;
               } else {
-                errorMessage = `HTTP 오류가 발생했습니다. (${response.status})`;
+                errorMessage = `${t('error.httpError')}(${response.status})`;
               }
           }
           

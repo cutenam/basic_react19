@@ -1,0 +1,357 @@
+{
+  "common": {
+    "welcome": "Welcome",
+    "hello": "Hello",
+    "goodbye": "Goodbye",
+    "yes": "Yes",
+    "no": "No",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "login": "Login",
+    "email": "Email",
+    "password": "Password",
+    "user": "User",
+    "admin": "Administrator",
+    "profile": "User Profile",
+    "name": "Name",
+    "logout": "Logout",
+    "role": "Role",
+    "appname": "React 19 Lecture Project",
+    "increase": "Increase",
+    "decrease": "Decrease",
+    "reset": "Reset",
+    "count": "Count",
+    "enterName": "Input your name",
+    "enterMessage": "Enter your message",
+    "enterEmail": "Input your email",
+    "commentFile": "Input a description of the file.",
+    "show": "Show",
+    "hide": "Hide",
+    "language": "Language",
+    "timer": "Timer",
+    "second": "Second",
+    "uploading": "uploading...",
+    "upload": "Upload File",
+    "submitting": "Submitting...",
+    "temporary": "Temporary",
+    "send": "Send",
+    "retry": "Retry",
+    "delete": "Delete",
+    "title": "Title",
+    "content": "Content"
+  },
+  "appInfo": {
+    "description": "Learn React step by step through systematically organized examples.",
+    "subtitle": "React 19 Learning Example",
+    "footerTitle": "A learning project built with React 19, TypeScript, and Vite"
+  },
+  "error": {
+    "checkNameEmail": "Please enter both name and email.",
+    "checkEmail": "Please enter a valid email address.",
+    "selectFile": "Please select a file.",
+    "checkServer": "Server error occurred. Please try again.",
+    "checkClient": "Client error occurred. Please try again.",
+    "httpError": "HTTP error occurred.",
+    "httpResponse" : {
+      "400": "Invalid request. (400 Bad Request)",
+      "401": "Authentication required. (401 Unauthorized)",
+      "403": "Access denied. (403 Forbidden)",
+      "404": "Requested resource not found. (404 Not Found)",
+      "408": "Request timed out. (408 Request Timeout)",
+      "429": "Too many requests. Please try again later. (429 Too Many Requests)",
+      "500": "Internal server error occurred. (500 Internal Server Error)",
+      "502": "Bad gateway error. (502 Bad Gateway)",
+      "503": "Service temporarily unavailable. (503 Service Unavailable)",
+      "504": "Gateway timeout. (504 Response Timeout)"
+    }
+  },
+  "features": {
+    "useState": {
+      "title": "useState Basic Example",
+      "heading": {
+        "titleCounter": "Counter",
+        "titleTextInput": "Text　Input",
+        "titleToggleButton": "Toggle Button"
+      },
+      "label": {
+        "textToggle": "This text is togglable."
+      }
+    },
+    "useEffect": {
+      "title": "useEffect Basic Example",
+      "heading": {
+        "titleWindowTitle": "Window Title Change on Count Change",
+        "titleWindowSize": "Window Size Change Detection",
+        "titleTimer": "Start Timer"
+      },
+      "label": {
+        "textAdjustWindowSize": "Adjust the window size to see the effect!",
+        "textWindowSize": "Window Size",
+        "second_zero": "{{count}}",
+        "second_one": "{{count}} second",
+        "second_other": "{{count}} seconds"
+      }
+    },
+    "useContext": {
+      "title": "Context Basic Example",
+      "heading": {
+        "titleMainCotent": "Main Content",
+        "titleNestedCotent": "Nested Content",
+        "titleAdvantage": "Advantages of Context",
+        "titleCaution": "Cautions"
+      },
+      "label": {
+        "textDarkMode": "Dark Mode",
+        "textLightMode": "Light Mode",
+        "textCurrentTheme": "Current Theme"
+      },
+      "description": {
+        "textMainContent": "This component does not have a direct parent-child relationship with the Header component, but it shares the same theme state through Context.",
+        "textNestedContent": "Even nested components can access the Context!",
+        "textAdvantage1": "Prevents prop drilling",
+        "textAdvantage2": "Enables global state management",
+        "textAdvantage3": "Simplifies data sharing between components",
+        "textAdvantage4": "Improves code readability",
+        "textCaution1": "When the Context value changes, all consumers are re-rendered",
+        "textCaution2": "Overuse can reduce component reusability",
+        "textCaution3": "For complex state management, consider using libraries like Redux or Zustand"
+      }
+    },
+    "authUseContext": {
+      "title": "Auth Context Example",
+      "heading": {
+        "protectedContent": "Protected Content",
+        "adminPrivileges": "Admin Privileges",
+        "titleFeaturesAuthContext": "Features of Authentication Context"
+      },
+      "label": {
+        "submitting": "Logging in...",
+        "testAccount": "Test Account"
+      },
+      "message": {
+        "protectedContent": "Hello, {{name}}! This content is only visible to authenticated users.",
+        "adminPrivileges": "This content is only visible to administrators.",
+        "loginFailed": "Login failed. Please check your email and password.",
+        "loginRequired": "Please login to view this content."
+      },
+      "description": {
+        "textFeaturesAuthContext1": "Global authentication state management",
+        "textFeaturesAuthContext2": "Login/Logout functionality",
+        "textFeaturesAuthContext3": "Role-based access control",
+        "textFeaturesAuthContext4": "Integration with local storage",
+        "textFeaturesAuthContext5": "Loading state management",
+        "textFeaturesAuthContext6": "Implementation of protected routes/components"
+      }
+    },
+    "actions": {
+      "title": "React 19 Actions Example",
+      "heading": {
+        "titleFeaturesAuthActions": "Features of Authentication Actions"
+      },
+      "label": {
+        "submitting": "Submitting...",
+        "submit": "Submit"
+      },
+      "response": {
+        "submitSuccess": "{{name}}! Your submission was successful!"
+      }
+    },
+    "useFormStatus": {
+      "title": "useFormStatus Example",
+      "label": {
+        "inputFile": "Slect File",
+        "commentFile": "Comment File",
+        "formStatus": "Form Status",
+        "httpMethod": "HTTP method",
+        "submitting": "Submitting",
+        "waiting": "Waiting",
+        "submitData": "Submitted Data",
+        "notExist": "Nothing"
+      },
+      "description": {
+        "textUseFormStatus": "This is an example of tracking the submission state within a form component.",
+        "uploadingFile": "Uploading file..."
+      },
+      "response": {
+        "submitSuccess": "{{name}} ({{size}}KB) was successfully uploaded!"
+      }
+    },
+    "optimistic": {
+      "title": "Optimistic Updates Example",
+      "label": {
+        "enterMessage": "Hello! Enter your message!",
+        "saveServer": "Saved in Server"
+      },
+      "description": {
+        "textOptimistic": "This example demonstrates how to update the UI before the data is saved to the server."
+      }
+    },
+    "useHook": {
+      "title": "Use Hook Example",
+      "heading": {
+        "titleFeaturesUseHook": "Key Features of the use Hook"
+      },
+      "label": {
+        "textDarkMode": "Dark Mode",
+        "textLightMode": "Light Mode",
+        "textCurrentTheme": "Current Theme",
+        "changeTheme": "Change Theme",
+        "selectUser": "Select User",
+        "loadingUserData": "Loading User Data...",
+        "loadingPostData": "Loading Post Data...",
+        "textFeaturesUseHook1": "Promise handling",
+        "textFeaturesUseHook2": "Context usage",
+        "textFeaturesUseHook3": "Suspense integration",
+        "textFeaturesUseHook4": "Conditional usage",
+        "textFeaturesUseHook5": "Error handling"
+      },
+      "description": {
+        "textExplainExample": "This is an example of handling Promises and Context using the use hook.",
+        "textChangeThemeUsingHook": "The Context is being used through the use hook.",
+        "textFeaturesUseHook1": "Uses Promises directly without async/await",
+        "textFeaturesUseHook2": "Accesses Context through the use hook instead of useContext",
+        "textFeaturesUseHook3": "Automatically triggers Suspense until the Promise resolves",
+        "textFeaturesUseHook4": "Can be used inside conditional statements (unlike traditional hooks)",
+        "textFeaturesUseHook5": "When a Promise rejects, the error propagates to the nearest Error Boundary"
+      },
+      "response": {
+        "failedGetUserData": "Failed to load user data.",
+        "failedGetPostData": "Failed to load post data."
+      },
+      "data": {
+        "postTitle": "Post {{postId}} - User {{userId}}",
+        "postContent": "This is the {{postId}}th post of user {{userId}}. The data was fetched using the use hook in React 19."
+      }
+    },
+    "customHook": {
+      "title": "Custom Hook Example",
+      "heading": {
+        "titleUseCounter": "useCounter Hook",
+        "titleUseLocalStorage": "useLocalStorage Hook",
+        "titleUseFetch": "useFetch Hook"
+      },
+      "label": {
+        "inputNumber": "Enter Number",
+        "savedName": "Saved Name",
+        "nothing": "Nothing",
+        "enterName": "Enter Name (Saved Automatically)",
+        "error": "Error"
+      }
+    },
+    "reactCompiler": {
+      "title": "React Compiler Example",
+      "heading": {
+        "titleCoreConcept": "Core Concept",
+        "titleManualOptimize": "Manual Optimization",
+        "titleAutoOptimize": "React Compiler (Automatic Optimization)",
+        "titleGuidelineReactComplier": "React Compiler Setup",
+        "titleAdvantage": "Main Benefits",
+        "titleCautions": "Caution",
+        "titleAdvantageCautions": "Benefits & Caution",
+        "titleHowItWorks": "How It Works",
+        "titleGuidelineTest": "Guideline Test"
+      },
+      "label": {
+        "resultHeavyComputation": "Result of Heavy Computation",
+        "childCounter": "Child Counter",
+        "parentCounter": "Parent Counter",
+        "textManualOptimize": "Using of React.memo, useCallback",
+        "textAutoOptimize": "Using of React Compiler",
+        "guidelineReactComplier1": "1. Install Packages",
+        "guidelineReactComplier2": "2. Babel Configuration(babel.config.js)",
+        "guidelineReactComplier3": "3. Vite Configuration (vite.config.ts)",
+        "guidelineReactComplier4": "4. Next.js Configuration (next.config.js)",
+        "advantage1": "Automatic Optimization",
+        "advantage2": "Dependency management",
+        "advantage3": "Performance improvement",
+        "advantage4": "Code simplification",
+        "advantage5": "Error prevention",
+        "caution1": "Experimental feature",
+        "caution2": "Build time",
+        "caution3": "Debugging",
+        "caution4": "Compatibility",
+        "caution5": "Learning curve",
+        "howItWorks1": "Code analysis",
+        "howItWorks2": "Dependency tracking",
+        "howItWorks3": "Memoization injection",
+        "howItWorks4": "Optimization application"
+      },
+      "description": {
+        "textExplainSample": "React Compiler in React 19 analyzes your code at build time and automatically applies optimizations.",
+        "textCoreConcept1": "React Compiler is a build-time optimization tool that analyzes JavaScript code and automatically applies memoization.",
+        "textCoreConcept2": "Developers manually add useMemo, useCallback, and React.memo.",
+        "textCoreConcept3": "The compiler automatically detects and applies optimization points.",
+        "textHeavyComputation1": "Even when increasing the counter, the child component does not re-render thanks to React.memo and useCallback.",
+        "textHeavyComputation2": "Even when increasing the counter, the child component does not re-render thanks to React Compiler.",
+        "textAdvantage1": "No need for useMemo/useCallback",
+        "textAdvantage2": " Automatically manages dependency arrays",
+        "textAdvantage3": "Automatically prevents unnecessary re-renders",
+        "textAdvantage4": "Reduces boilerplate code",
+        "textAdvantage5": "Avoids incorrect optimization patterns",
+        "textCaution1": "Still in the stabilization phase",
+        "textCaution2": "May increase compilation time",
+        "textCaution3": "Debugging compiled code can be difficult",
+        "textCaution4": "May conflict with some libraries",
+        "textCaution5": "Requires understanding of internal behavior",
+        "textHowItWorks1": "The Babel plugin analyzes component code",
+        "textHowItWorks2": "Automatically tracks variable and function dependencies",
+        "textHowItWorks3": "Automatically inserts memoization code where needed",
+        "textHowItWorks4": "Generates code to prevent unnecessary re-rendering",
+        "textGuidelineTest1": "Click each tab to compare the traditional approach with the Compiler approach.",
+        "textGuidelineTest2": "Click the \"Counter\" button and check the console.",
+        "textGuidelineTest3": "Observe whether the child components are re-rendered.",
+        "textGuidelineTest4": "In the \"Setup\" tab, see how to apply it to your project.",
+        "textGuidelineTest5": "Review the benefits and cautions to consider applying it to real projects."
+      }
+    }
+  },
+  "i18next": {
+    "title": "Multi-language Support with react-i18next",
+    "subtitle": "Production-level internationalization solution",
+    "currentLanguage": "Current Language",
+    "selectLanguage": "Select Language",
+    "korean": "Korean",
+    "english": "English",
+    "japanese": "Japanese",
+    "description": "react-i18next is the most widely used internationalization library for React applications.",
+    "features": {
+      "title": "Key Features",
+      "feature1": "Translation file separation through namespaces",
+      "feature2": "Lazy loading and code splitting support",
+      "feature3": "Pluralization, date, and number formatting",
+      "feature4": "Nested translations and interpolation",
+      "feature5": "Full TypeScript support",
+      "feature6": "SSR (Server-Side Rendering) support"
+    },
+    "interpolation": {
+      "title": "Interpolation Example",
+      "greeting": "Hello, {{name}}!",
+      "welcome": "Welcome to {{appName}}",
+      "userInfo": "You have {{count}} messages",
+      "enterName": "Enter your name"
+    },
+    "pluralization": {
+      "title": "Pluralization",
+      "message_zero": "No messages",
+      "message_one": "{{count}} new message",
+      "message_other": "{{count}} new messages"
+    },
+    "nested": {
+      "title": "Nested Translations",
+      "user": {
+        "profile": "User Profile",
+        "settings": "Settings",
+        "logout": "Logout"
+      },
+      "admin": {
+        "dashboard": "Admin Dashboard",
+        "users": "User Management",
+        "settings": "System Settings"
+      }
+    }
+  }
+}

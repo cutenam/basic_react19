@@ -1,5 +1,6 @@
 import { useActionState, useOptimistic } from 'react';
 import Button from "../../components/common/Button";
+import { useTranslation } from 'react-i18next';
 
 interface MessageState {
   messages: string[];
@@ -22,6 +23,7 @@ interface MessageState {
  *
  */
 export default function OptimisticExample() {
+  const { t } = useTranslation();
   /**
    *
    * setMessages
@@ -38,24 +40,24 @@ export default function OptimisticExample() {
       // 네트워크 지연 시뮬레이션
       await new Promise(resolve => setTimeout(resolve, 1000));
 
-      // 50% 확률로 에러 발생하여 자동 롤백 테스트
-      const isError = Math.random() < 0.5;
+      // 30% 확률로 에러 발생하여 자동 롤백 테스트
+      const isError = Math.random() < 0.3;
 
       if (isError) {
         // 에러 발생 시: 이전 상태 유지 + 에러 메시지 설정
         return {
           messages: prevState.messages, // 🔑 자동 롤백: 이전 상태 그대로 유지
-          error: '❌ 서버 오류가 발생했습니다. 다시 시도해주세요.'
+          error: `❌ ${t('error.checkServer')}`
         };
       }
 
       // 성공 시: 새 메시지 추가 + 에러 상태 초기화
       return {
-        messages: [...prevState.messages, `✅ 서버 반영: ${message}`],
+        messages: [...prevState.messages, `✅ ${t('features.optimistic.label.saveServer')}: ${message}`],
         error: undefined
       };
     },
-    {messages: ['👋 안녕하세요! 메시지를 입력해보세요.'], error: undefined} // 초기 상태
+    {messages: [`👋 ${t('features.optimistic.label.enterMessage')}`], error: undefined} // 초기 상태
   );
 
   const messages = state.messages;
@@ -79,7 +81,7 @@ export default function OptimisticExample() {
    */
   const [optimisticMessages, addOptimisticMessage] = useOptimistic(
     messages,   // setMessages 에 의해 세팅된 메시지
-    (state, newMessage: string) => [...state, `임시: ${newMessage}`]  // 낙관적 업데이트 함수
+    (state, newMessage: string) => [...state, `${t('common.temporary')}: ${newMessage}`]  // 낙관적 업데이트 함수
   );
 
   /**
@@ -105,8 +107,10 @@ export default function OptimisticExample() {
 
   return (
     <div style={{padding: '20px', border: '1px solid #ccc', margin: '10px'}}>
-      <h3>Optimistic Updates 예제 (50% 확률로 에러 발생)</h3>
-
+      <h3>{t('features.optimistic.title')}</h3>
+      <p style={{ color: '#666', marginBottom: '20px', textAlign: 'left' }}>
+        {t('features.optimistic.description.textOptimistic')}
+      </p>
       {state.error && (
         <div style={{
           marginBottom: '15px',
@@ -131,7 +135,7 @@ export default function OptimisticExample() {
           <div key={index} style={{
             marginBottom: '5px',
             padding: '5px',
-            backgroundColor: msg.startsWith('임시:') ? '#fff3cd' : '#d4edda',
+            backgroundColor: msg.startsWith(`${t('common.temporary')}:`) ? '#fff3cd' : '#d4edda',
             borderRadius: '4px'
           }}>
             {msg}
@@ -142,10 +146,11 @@ export default function OptimisticExample() {
       <form action={handleSubmit} style={{display: 'flex', gap: '10px'}}>
         <input
           name="message"
-          placeholder="메시지를 입력하세요"
+          placeholder={t('common.enterMessage')}
+          type="text"
           style={{flex: 1, padding: '8px', border: '1px solid #ccc', borderRadius: '4px'}}
         />
-        <Button type="submit" variant='function' size='medium' style={{marginLeft: '5px'}}>전송</Button>
+        <Button type="submit" variant='function' size='medium' style={{marginLeft: '5px'}}>{t('common.send')}</Button>
       </form>
     </div>
   );
