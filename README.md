@@ -21,17 +21,14 @@ npm run build
 src/
 ├── components/           # 재사용 가능한 컴포넌트
 │   ├── common/          # 공통 컴포넌트 (Button, Input 등)
-│   ├── layout/          # 레이아웃 컴포넌트 (Navigation 등)
-│   └── ui/              # UI 컴포넌트
+│   └── layout/          # 레이아웃 컴포넌트 (Navigation 등)│  
 ├── examples/            # 학습 예제들
 │   ├── basics/          # 기본 개념 (useState, useEffect 등)
-│   ├── hooks/           # 커스텀 훅 예제
-│   ├── patterns/        # 리액트 패턴 예제
-│   ├── react19/         # React 19 새 기능들
-│   └── advanced/        # 고급 개념들
-├── hooks/               # 커스텀 훅들
+│   ├── react19/         # React 19 새 기능들(useActionState, useFormStatus 등)
+│   ├── hooks/           # 커스텀 훅 예제  
+│   └── advanced/        # 고급 개념들(i18n)
+├── hooks/               # 커스텀 훅 정의
 ├── types/               # TypeScript 타입 정의
-├── utils/               # 유틸리티 함수들
 ├── styles/              # 스타일 파일들
 └── assets/              # 이미지, 아이콘 등
 ```
@@ -41,15 +38,25 @@ src/
 ### 기본 개념 (Basics)
 - **useState**: 상태 관리의 기본
 - **useEffect**: 사이드 이펙트 처리
+- **useContext**: 컨텍스트 API 사용
+- **useCallback**: 콜백 함수 재사용
+- **memo**: 메모이제이션
 
 ### React 19 새 기능
-- **Actions**: 서버 상태와 폼 처리의 새로운 방식
-- **Optimistic Updates**: 낙관적 업데이트로 UX 개선
+- **useActionState**: 서버 상태와 폼 처리의 새로운 방식
+- **useFormStatus**: 폼 상태 관리
+- **useOptimistic**: 낙관적 업데이트로 UX 개선
+- **use**: 컨텍스트 API 사용의 새로운 방식
+- **React Compiler**: 빌드단계에서 컴포넌트 렌더링 최적화 
 
 ### 커스텀 훅 (Custom Hooks)
 - **useCounter**: 카운터 로직 재사용
 - **useLocalStorage**: localStorage와 상태 동기화
 - **useFetch**: HTTP 요청 처리
+
+### Advanced
+- **i18n**: 다국어지원 기능
+  - **react-i18next**: React에서 i18n 처리
 
 ## 🛠 기술 스택
 
