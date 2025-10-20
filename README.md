@@ -1,91 +1,91 @@
-# React 19 학습 프로젝트
+# React 19 学習プロジェクト
 
-React 19의 새로운 기능들과 기본 개념들을 체계적으로 학습할 수 있는 프로젝트입니다.
+React 19の新機能と基本概念を体系的に学習できるプロジェクトです。
 
-## 🚀 시작하기
+## 🚀 始め方
 
 ```bash
-# 의존성 설치
+# 依存関係のインストール
 npm install
 
-# 개발 서버 실행
+# 開発サーバーの起動
 npm run dev
 
-# 빌드
+# ビルド
 npm run build
 ```
 
-## 📁 프로젝트 구조
+## 📁 プロジェクト構造
 
 ```
 src/
-├── components/           # 재사용 가능한 컴포넌트
-│   ├── common/          # 공통 컴포넌트 (Button, Input 등)
-│   └── layout/          # 레이아웃 컴포넌트 (Navigation 등)│  
-├── examples/            # 학습 예제들
-│   ├── basics/          # 기본 개념 (useState, useEffect 등)
-│   ├── react19/         # React 19 새 기능들(useActionState, useFormStatus 등)
-│   ├── hooks/           # 커스텀 훅 예제  
-│   └── advanced/        # 고급 개념들(i18n)
-├── hooks/               # 커스텀 훅 정의
-├── types/               # TypeScript 타입 정의
-├── styles/              # 스타일 파일들
-└── assets/              # 이미지, 아이콘 등
+├── components/           # 再利用可能なコンポーネント
+│   ├── common/          # 共通コンポーネント（Button、Inputなど）
+│   └── layout/          # レイアウトコンポーネント（Navigationなど）
+├── examples/            # 学習サンプル
+│   ├── basics/          # 基本概念（useState、useEffectなど）
+│   ├── react19/         # React 19の新機能（useActionState, useFormStatus など）
+│   ├── hooks/           # カスタムフックのサンプル
+│   └── advanced/        # 高度な概念（i18nなど）
+├── hooks/               # カスタムフック
+├── types/               # TypeScript型定義
+├── styles/              # スタイルファイル
+└── assets/              # 画像、アイコンなど
 ```
 
-## 📚 학습 내용
+## 📚 学習内容
 
-### 기본 개념 (Basics)
-- **useState**: 상태 관리의 기본
-- **useEffect**: 사이드 이펙트 처리
-- **useContext**: 컨텍스트 API 사용
-- **useCallback**: 콜백 함수 재사용
-- **memo**: 메모이제이션
+### 基本概念（Basics）
+- **useState**: 状態管理の基本
+- **useEffect**: 副作用の処理
+- **useContext**: コンテキストAPIの使用
+- **useCallback**: コールバック関数の再利用
+- **memo**: メモ化
 
-### React 19 새 기능
-- **useActionState**: 서버 상태와 폼 처리의 새로운 방식
-- **useFormStatus**: 폼 상태 관리
-- **useOptimistic**: 낙관적 업데이트로 UX 개선
-- **use**: 컨텍스트 API 사용의 새로운 방식
-- **React Compiler**: 빌드단계에서 컴포넌트 렌더링 최적화 
+### React 19の新機能
+- **useActionState**: サーバー状態とフォーム処理の新しい方式
+- **useFormStatus**: フォーム状態管理
+- **useOptimistic**: 楽観的更新によるUX改善
+- **use**: コンテキストAPIを使用する新しい方式
+- **React Compiler**: ビルド段階でのコンポーネントレンダリング最適化
 
-### 커스텀 훅 (Custom Hooks)
-- **useCounter**: 카운터 로직 재사용
-- **useLocalStorage**: localStorage와 상태 동기화
-- **useFetch**: HTTP 요청 처리
+### カスタムフック（Custom Hooks）
+- **useCounter**: カウンターロジックの再利用
+- **useLocalStorage**: localStorageと状態の同期
+- **useFetch**: HTTPリクエスト処理
 
 ### Advanced
-- **i18n**: 다국어지원 기능
-  - **react-i18next**: React에서 i18n 처리
+- **i18n**: 多言語対応機能
+  - **react-i18next**: Reactでのi18n処理
 
-## 🛠 기술 스택
+## 🛠 技術スタック
 
-- **React 19**: 최신 React 버전
-- **TypeScript**: 타입 안전성
-- **Vite**: 빠른 개발 환경
-- **ESLint**: 코드 품질 관리
+- **React 19**: 最新のReactバージョン
+- **TypeScript**: 型安全性
+- **Vite**: 高速な開発環境
+- **ESLint**: コード品質管理
 
-## 📖 학습 가이드
+## 📖 学習ガイド
 
-1. **기본 개념부터 시작**: `useState`와 `useEffect` 예제로 React의 기본을 익히세요
-2. **React 19 새 기능 탐험**: Actions와 Optimistic Updates를 통해 최신 기능을 학습하세요
-3. **커스텀 훅 활용**: 로직 재사용의 패턴을 익히세요
-4. **코드 구조 이해**: 체계적인 디렉토리 구조를 통해 확장 가능한 앱 구조를 학습하세요
+1. **基本概念から始める**: `useState`と`useEffect`のサンプルでReactの基本を習得しましょう
+2. **React 19の新機能を探索**: ActionsとOptimistic Updatesを通じて最新機能を学習しましょう
+3. **カスタムフックの活用**: ロジック再利用のパターンを習得しましょう
+4. **コード構造の理解**: 体系的なディレクトリ構造を通じて拡張可能なアプリ構造を学習しましょう
 
-## 🎯 학습 목표
+## 🎯 学習目標
 
-- React의 핵심 개념 이해
-- React 19의 새로운 기능 활용
-- 재사용 가능한 컴포넌트와 훅 작성
-- TypeScript와 React의 조합 활용
-- 체계적인 프로젝트 구조 설계
+- Reactの核心概念の理解
+- React 19の新機能の活用
+- 再利用可能なコンポーネントとフックの作成
+- TypeScriptとReactの組み合わせ活用
+- 体系的なプロジェクト構造の設計
 
-## 📝 추가 학습 리소스
+## 📝 追加学習リソース
 
-- [React 공식 문서](https://react.dev)
-- [React 19 릴리즈 노트](https://react.dev/blog/2024/04/25/react-19)
-- [TypeScript 핸드북](https://www.typescriptlang.org/docs/)
+- [React公式ドキュメント](https://react.dev)
+- [React 19リリースノート](https://react.dev/blog/2024/04/25/react-19)
+- [TypeScriptハンドブック](https://www.typescriptlang.org/docs/)
 
 ---
 
-각 예제를 직접 실행해보고 코드를 수정해보면서 React의 동작 원리를 체험해보세요! 🎉
+各サンプルを直接実行してコードを修正しながら、Reactの動作原理を体験してみてください！ 🎉
