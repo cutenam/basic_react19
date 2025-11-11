@@ -26,7 +26,7 @@ src/
 │   ├── basics/          # 기본 개념 (useState, useEffect 등)
 │   ├── react19/         # React 19 새 기능들(useActionState, useFormStatus 등)
 │   ├── hooks/           # 커스텀 훅 예제  
-│   └── advanced/        # 고급 개념들(i18n)
+│   └── advanced/        # 고급 개념들(i18n, Redux)
 ├── hooks/               # 커스텀 훅 정의
 ├── types/               # TypeScript 타입 정의
 ├── styles/              # 스타일 파일들
@@ -57,6 +57,7 @@ src/
 ### Advanced
 - **i18n**: 다국어지원 기능
   - **react-i18next**: React에서 i18n 처리
+- **Redux**: Redux 툴킷 이용한 store 관리
 
 ## 🛠 기술 스택
 
@@ -82,9 +83,17 @@ src/
 
 ## 📝 추가 학습 리소스
 
+### React
 - [React 공식 문서](https://react.dev)
 - [React 19 릴리즈 노트](https://react.dev/blog/2024/04/25/react-19)
+
+### TypeScript
 - [TypeScript 핸드북](https://www.typescriptlang.org/docs/)
+
+### Redux Toolkit
+- [Redux Toolkit 소개](https://redux-toolkit.js.org/)
+- [createSlice API](https://redux-toolkit.js.org/api/createSlice)
+- [TypeScript Quick Start](https://redux-toolkit.js.org/tutorials/typescript)
 
 ---
 

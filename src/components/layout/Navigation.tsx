@@ -28,6 +28,7 @@ const navigationItems: NavItem[] = [
   { id: 'auth-context', label: 'Auth Context', category: 'basics' },
   { id: 'i18n', label: 'Multi-language (Context)', category: 'advanced' },
   { id: 'i18next', label: 'Multi-language (i18next)', category: 'advanced' },
+  { id: 'redux', label: 'Redux Toolkit', category: 'advanced' },
   { id: 'actions', label: 'Actions', category: 'react19' },
   { id: 'optimistic', label: 'Optimistic Updates', category: 'react19' },
   { id: 'form-status', label: 'useFormStatus', category: 'react19' },

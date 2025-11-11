@@ -25,6 +25,7 @@ export type ExampleType =
   | 'auth-context'
   | 'i18n'
   | 'i18next'
+  | 'redux'
   | 'actions' 
   | 'optimistic' 
   | 'form-status'

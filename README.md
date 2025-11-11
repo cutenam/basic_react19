@@ -57,6 +57,7 @@ src/
 ### Advanced
 - **i18n**: 多言語対応機能
   - **react-i18next**: Reactでのi18n処理
+- **Redux**: Redux Toolkitでのstore処理
 
 ## 🛠 技術スタック
 
@@ -82,9 +83,18 @@ src/
 
 ## 📝 追加学習リソース
 
+### React
 - [React公式ドキュメント](https://react.dev)
 - [React 19リリースノート](https://react.dev/blog/2024/04/25/react-19)
 - [TypeScriptハンドブック](https://www.typescriptlang.org/docs/)
+
+### TypeScript
+- [TypeScriptハンドブック](https://www.typescriptlang.org/docs/)
+
+### Redux Toolkit
+- [Redux Toolkit公式ドキュメント](https://redux-toolkit.js.org/)
+- [createSlice API](https://redux-toolkit.js.org/api/createSlice)
+- [TypeScript Quick Start](https://redux-toolkit.js.org/tutorials/typescript)
 
 ---
 

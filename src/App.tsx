@@ -13,6 +13,7 @@ import ContextExample from './examples/basics/ContextExample'
 import AuthContextExample from './examples/basics/AuthContextExample'
 import I18nExample from './examples/advanced/i18n/I18nExample.tsx'
 import I18nextExample from './examples/advanced/i18n/I18nextExample.tsx'
+import ReduxExample from './examples/advanced/redux/ReduxExample'
 import ActionsExample from './examples/react19/ActionsExample'
 import OptimisticExample from './examples/react19/OptimisticExample'
 import FormStatusExample from './examples/react19/FormStatusExample'
@@ -41,6 +42,8 @@ function App() {
         return <I18nExample />
       case 'i18next':
         return <I18nextExample />
+      case 'redux':
+        return <ReduxExample />
       case 'actions':
         return <ActionsExample />
       case 'optimistic':
