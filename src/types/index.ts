@@ -31,4 +31,6 @@ export type ExampleType =
   | 'form-status'
   | 'use-hook'
   | 'react-compiler'
-  | 'custom-hooks';
+  | 'custom-hooks'
+  | 'use-ref'
+  | 'large-data';

@@ -18,8 +18,10 @@ import ActionsExample from './examples/react19/ActionsExample'
 import OptimisticExample from './examples/react19/OptimisticExample'
 import FormStatusExample from './examples/react19/FormStatusExample'
 import CustomHookExample from './examples/hooks/CustomHookExample'
+import UseRefExample from './examples/hooks/UseRefExample'
 import UseHookExample from './examples/react19/UseHookExample'
 import ReactCompilerExample from './examples/react19/ReactCompilerExample'
+import LargeDataPatternsExample from './examples/advanced/large-data/LargeDataPatternsExample'
 import { LanguageProvider } from './examples/advanced/i18n/LanguageContext.tsx'
 
 import type { ExampleType } from './types'
@@ -56,6 +58,10 @@ function App() {
         return <ReactCompilerExample />
       case 'custom-hooks':
         return <CustomHookExample />
+      case 'use-ref':
+        return <UseRefExample />
+      case 'large-data':
+        return <LargeDataPatternsExample />
       default:
         return <StateExample />
     }

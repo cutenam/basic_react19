@@ -35,6 +35,8 @@ const navigationItems: NavItem[] = [
   { id: 'use-hook', label: 'use Hook', category: 'react19' },
   { id: 'react-compiler', label: 'React Compiler', category: 'react19' },
   { id: 'custom-hooks', label: 'Custom Hook', category: 'hooks' },
+  { id: 'use-ref', label: 'useRef Hook', category: 'hooks' },
+  { id: 'large-data', label: '대용량 데이터 처리', category: 'advanced' },
 ];
 
 /**
